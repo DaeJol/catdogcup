@@ -1,0 +1,54 @@
+# https://jaeryo2357.tistory.com/128 참고
+# https://docs.gradle.org/current/userguide/rich_versions.html#rich-version-constraints 참고
+# 버전 카탈로그는 멀티 모듈에서 모듈별 버전의 파편화를 막기 위해서 사용합니다.
+# 예를 들어, 데이터 레이어에서 ktx 버전을 1.3.10으로 쓰는데 app 레이어에서는 1.3.0을 사용한다? 이렇게 되면
+# 빌드나 기능 개발 시 문제가 될 여지가 있습니다.
+
+[versions]
+# data layer
+retrofit2 = "2.9.0"
+okhttp = "4.10.0"
+ktx = "1.7.0"
+appcompat = "1.6.1"
+
+# plugin
+androidGradlePlugin = "7.3.0"
+kotlin = "1.7.10"
+material = "1.11.0"
+composeMaterial = "1.2.1"
+junit = "4.13.2"
+junitTest = "1.1.5"
+espresso = "3.5.1"
+lifecycle = "2.3.1"
+compose = "1.3.1"
+
+[libraries]
+# {groupId}:{artifactId}:{version}
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit2" }
+gson = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit2" }
+rxjava = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit2" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-test = { group = "androidx.test.ext", name = "junit", version.ref = "junitTest" }
+espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+compose = { group = "androidx.activity", name = "activity-compose", version.ref = "compose" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3-android", version.ref = "composeMaterial" }
+
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin"}
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin"}
