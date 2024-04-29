@@ -28,17 +28,25 @@ compose = "1.3.1"
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit2" }
 moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit2" }
 gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit2" }
+
+# 테스트 라이브러리
+coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version = "1.7.3" }
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-test = { group = "androidx.test.ext", name = "junit", version.ref = "junitTest" }
+test-ext = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+core-test = { group = "androidx.test.ext", name = "junit", version = "1.5.0" }
+
+
 rxjava = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit2" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
-
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-junit-test = { group = "androidx.test.ext", name = "junit", version.ref = "junitTest" }
 espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+
 compose = { group = "androidx.activity", name = "activity-compose", version.ref = "compose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }

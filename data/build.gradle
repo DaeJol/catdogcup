@@ -49,4 +49,14 @@ dependencies {
     // OkHttp
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
+
+    //coroutine Testing
+    testImplementation(libs.coroutine.test)
+
+//mock server
+    testImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.mockwebserver)
+
+//core Testing
+    androidTestImplementation(libs.test.ext)
 }
