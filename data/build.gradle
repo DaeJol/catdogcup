@@ -31,6 +31,8 @@ android {
 }
 
 dependencies {
+    // hilt
+    implementation(libs.hilt)
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
@@ -59,4 +61,6 @@ dependencies {
 
 //core Testing
     androidTestImplementation(libs.test.ext)
+
+    implementation project(path: ':domain')
 }

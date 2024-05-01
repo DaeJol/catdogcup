@@ -47,6 +47,9 @@ android {
 }
 
 dependencies {
+    // hilt
+    implementation(libs.hilt)
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
