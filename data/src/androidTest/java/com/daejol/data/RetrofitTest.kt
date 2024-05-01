@@ -1,6 +1,7 @@
 package com.daejol.data
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.daejol.data.api.CatImagesApi
 import com.daejol.data.api.CatRetrofitClient
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
@@ -12,6 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 
 @RunWith(AndroidJUnit4::class)
@@ -19,12 +21,15 @@ class RetrofitTest {
     private lateinit var server: MockWebServer
     private lateinit var retrofit: Retrofit
 
+    private lateinit var catImagesApi: CatImagesApi
+
     @Before
     fun setUp() {
         server = MockWebServer()
         server.start()
 
         retrofit = CatRetrofitClient.instance
+        catImagesApi = retrofit.create(CatImagesApi::class.java)
     }
 
     @After
@@ -45,6 +50,9 @@ class RetrofitTest {
                 }
             ]
         """.trimIndent()
+
+        val catImageDto = catImagesApi.getCatImages()
+
 
         server.enqueue(MockResponse().setBody(response))
     }
