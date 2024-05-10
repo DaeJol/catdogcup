@@ -15,6 +15,7 @@ class CatImagesRepositoryImpl @Inject constructor(
         try {
             val catImages =
                 catImagesApi.getCatImages().body()?.map { it.toEntity() }?.toList()
+            println(catImages)
             emit(DataState.Success(data = catImages))
         } catch (e: Exception) {
             emit(DataState.Fail(data = null, exception = e))
