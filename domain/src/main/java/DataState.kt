@@ -10,12 +10,16 @@ sealed class DataState<T>(
 
     fun on(
         onError: (String) -> Unit,
-        onSuccess: (T?) -> Unit,
-    ) {
+        onSuccess: (T?) -> T?,
+    ): T? {
         when (this@DataState) {
-            is Success -> onSuccess(this@DataState.data)
-            else -> handleException(exception) {
-                onError(exception.toString())
+            is Success -> return onSuccess(this@DataState.data)
+            else -> {
+                handleException(exception) {
+                    onError(exception.toString())
+                }
+
+                return null
             }
         }
     }
