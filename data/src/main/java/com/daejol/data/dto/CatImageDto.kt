@@ -20,7 +20,7 @@ data class CatImageDto(
 ) {
     fun toEntity(): ImageEntity {
         val breedsList = this.breeds.map {
-            Gson().fromJson(Gson().toJson(it), BreedEntity::class.java)
+            it.toEntity()
         }.toList()
 
         return ImageEntity(
