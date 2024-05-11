@@ -8,20 +8,20 @@ import entity.ImageEntity
 
 data class CatImageDto(
     @SerializedName("id")
-    val id: String,
+    val id: String?,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("width")
-    val width: Double,
+    val width: Double?,
     @SerializedName("height")
-    val height: Double,
+    val height: Double?,
     @SerializedName("breeds")
-    val breeds: List<CatBreedsDto>
+    val breeds: List<CatBreedsDto>?
 ) {
     fun toEntity(): ImageEntity {
-        val breedsList = this.breeds.map {
+        val breedsList = this.breeds?.map {
             it.toEntity()
-        }.toList()
+        }?.toList()
 
         return ImageEntity(
             id = this.id,

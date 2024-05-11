@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class ImageEntity(
     @SerializedName("id")
-    val id: String,
+    val id: String?,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("width")
-    val width: Double,
+    val width: Double?,
     @SerializedName("height")
-    val height: Double,
+    val height: Double?,
     @SerializedName("breeds")
-    val breeds: List<BreedEntity>
+    val breeds: List<BreedEntity>?
 )

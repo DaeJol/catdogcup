@@ -57,6 +57,8 @@ object AppModule {
                 uriBuilder.addQueryParameter(key, value)
             }
 
+            println("[keykat] $uriBuilder")
+
             return chain.proceed(
                 request.newBuilder()
                     .url(uriBuilder.build())

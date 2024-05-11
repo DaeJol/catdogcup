@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             getImageUsecase.getRandomCatImages(10)?.collect {
                 it?.forEach { list ->
-                    println(list)
+                    println("[keykat] list: $list")
                 }
             }
         }
