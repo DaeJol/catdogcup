@@ -5,7 +5,8 @@
 # 빌드나 기능 개발 시 문제가 될 여지가 있습니다.
 
 [versions]
-hilt = "2.44"
+hilt = "2.51.1"
+hiltCompiler = "1.2.0"
 
 # data layer
 retrofit2 = "2.9.0"
@@ -14,8 +15,8 @@ ktx = "1.13.1"
 appcompat = "1.6.1"
 
 # plugin
-androidGradlePlugin = "7.4.2"
-kotlin = "1.7.10"
+androidGradlePlugin = "8.2.0"
+kotlin = "1.9.23"
 material = "1.11.0"
 composeMaterial = "1.2.1"
 junit = "4.13.2"
@@ -32,7 +33,7 @@ playServicesAnalytics = "18.0.4"
 
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 

@@ -4,11 +4,16 @@ plugins {
     alias(libs.plugins.hilt.android)
 }
 
+apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.daejol.data'
     compileSdk 34
+
+    configurations {
+        implementation.exclude group: 'org.jetbrains', module: 'annotations'
+    }
 
     defaultConfig {
         minSdk 26
@@ -25,11 +30,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -57,15 +67,16 @@ dependencies {
     //coroutine Testing
     testImplementation(libs.coroutine.test)
 
-//mock server
+    //mock server
     testImplementation(libs.mockwebserver)
     androidTestImplementation(libs.mockwebserver)
 
-//core Testing
+    //core Testing
     androidTestImplementation(libs.test.ext)
 
     // hilt
     implementation(libs.hilt)
+    implementation(libs.hilt.compiler)
 
     // hilt testing
     implementation libs.hilt.android.testing

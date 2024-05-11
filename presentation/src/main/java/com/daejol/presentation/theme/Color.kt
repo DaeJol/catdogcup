@@ -1,4 +1,4 @@
-package com.daejol.catdogcup.ui.theme
+package com.daejol.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

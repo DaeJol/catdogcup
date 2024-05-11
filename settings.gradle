@@ -16,5 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "catdogcup"
 include ':app'
 include ':data'
-enableFeaturePreview("VERSION_CATALOGS")
 include ':domain'
+include ':presentation'

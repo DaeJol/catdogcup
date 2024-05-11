@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
 }
@@ -8,7 +8,7 @@ apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    namespace 'com.daejol.catdogcup'
+    namespace 'com.daejol.presentation'
     compileSdk 34
 
     configurations {
@@ -16,16 +16,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.daejol.catdogcup"
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
     }
 
     buildTypes {
@@ -40,6 +32,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packagingOptions {
         resources {
@@ -80,7 +78,5 @@ dependencies {
     kaptAndroidTest(libs.hilt.android.compiler)
     kapt (libs.dagger.hilt.compiler)
 
-    implementation project(path: ':data')
     implementation project(path: ':domain')
-    implementation project(path: ':presentation')
 }
