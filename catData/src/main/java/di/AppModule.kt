@@ -1,7 +1,7 @@
 package di
 
-import com.daejol.data.api.ApiConst
-import com.daejol.data.api.CatImagesApi
+import com.daejol.catdata.api.ApiConst
+import com.daejol.catdata.api.CatImagesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

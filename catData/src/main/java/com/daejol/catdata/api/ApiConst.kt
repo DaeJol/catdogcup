@@ -1,4 +1,4 @@
-package com.daejol.data.api
+package com.daejol.catdata.api
 
 class ApiConst {
     companion object {

@@ -1,6 +1,6 @@
-package com.daejol.data.api
+package com.daejol.catdata.api
 
-import com.daejol.data.dto.CatImageDto
+import com.daejol.catdata.dto.CatImageDto
 import okhttp3.Response
 import retrofit2.http.GET
 

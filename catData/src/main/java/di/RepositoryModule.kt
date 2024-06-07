@@ -1,6 +1,6 @@
 package di
 
-import com.daejol.data.repository.CatImagesRepositoryImpl
+import com.daejol.catdata.repository.CatImagesRepositoryImpl
 import com.daejol.domain.repository.CatImagesRepository
 import dagger.Binds
 import dagger.Module

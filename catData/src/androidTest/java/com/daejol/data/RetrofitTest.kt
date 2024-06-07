@@ -1,7 +1,7 @@
 package com.daejol.data
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.daejol.data.api.CatImagesApi
+import com.daejol.catdata.api.CatImagesApi
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before

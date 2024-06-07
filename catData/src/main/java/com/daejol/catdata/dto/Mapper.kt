@@ -1,4 +1,4 @@
-package com.daejol.data.dto
+package com.daejol.catdata.dto
 
 import entity.BreedEntity
 import entity.ImageEntity
