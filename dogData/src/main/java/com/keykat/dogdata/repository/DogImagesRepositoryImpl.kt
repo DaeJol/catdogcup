@@ -3,7 +3,6 @@ package com.daejol.catdata.repository
 import DataState
 import com.daejol.catdata.api.DogImagesApi
 import com.daejol.catdata.dto.Mapper.toDomain
-import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
 import entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class DogImagesRepositoryImpl @Inject constructor(
-    private val dogImagesApi: DogImagesApi
+    private val dogImagesApi: DogImagesApi,
 ) : DogImagesRepository {
     override suspend fun getDogRandomImages(imageCount: Int): Flow<DataState<List<ImageEntity>>> = flow {
         try {
@@ -23,5 +22,4 @@ class DogImagesRepositoryImpl @Inject constructor(
             emit(DataState.Fail(data = null, exception = e))
         }
     }
-
 }

@@ -1,8 +1,6 @@
 package com.daejol.catdata.dto
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import entity.BreedEntity
 
 data class CatBreedsDto(
     // TODO: 이렇게 SerializedName으로 json column명을 정의하고

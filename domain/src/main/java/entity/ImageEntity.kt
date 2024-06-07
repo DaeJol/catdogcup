@@ -12,5 +12,5 @@ data class ImageEntity(
     @SerializedName("height")
     val height: Double?,
     @SerializedName("breeds")
-    val breeds: List<BreedEntity>?
+    val breeds: List<BreedInfoEntity>?
 )

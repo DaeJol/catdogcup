@@ -1,11 +1,11 @@
 package com.daejol.catdata.dto
 
-import entity.BreedEntity
+import entity.BreedInfoEntity
 import entity.ImageEntity
 
 object Mapper {
-    fun CatBreedsDto.toDomain(): BreedEntity {
-        return BreedEntity(
+    fun CatBreedsDto.toDomain(): BreedInfoEntity {
+        return BreedInfoEntity(
             altNames = this.altNames,
             cfaUrl = this.cfaUrl,
             description = this.description,

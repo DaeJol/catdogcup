@@ -1,11 +1,25 @@
 package com.daejol.catdata.dto
 
-import entity.BreedEntity
+import com.keykat.dogdata.dto.DogBreedDto
+import entity.BreedInfoEntity
+import entity.BreedTypeEntity
 import entity.ImageEntity
 
 object Mapper {
-    fun DogBreedsDto.toDomain(): BreedEntity {
-        return BreedEntity(
+    fun DogBreedDto.toDomain(): BreedTypeEntity {
+        return BreedTypeEntity(
+            id = this.id,
+            name = this.name,
+            weight = this.weight,
+            height = this.height,
+            lifeSpan = this.lifeSpan,
+            breedsFor = this.breedsFor,
+            breedGroup = this.breedGroup
+        )
+    }
+
+    fun DogBreedsDto.toDomain(): BreedInfoEntity {
+        return BreedInfoEntity(
             altNames = this.altNames,
             cfaUrl = this.cfaUrl,
             description = this.description,

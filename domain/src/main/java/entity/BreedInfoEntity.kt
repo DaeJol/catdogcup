@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 // TODO: ex) intelligence랑 description, vetstreet_url에 있는 정보를 활용해서
 // TODO: 우리가 사용자에게 보여 줄 멘트를 translator로 전달한다거나 등등
 // TODO: 또한 필요 없는 속성은 제거하자.
-data class BreedEntity(
+data class BreedInfoEntity(
     @SerializedName("alt_names")
     val altNames: String?,
     @SerializedName("cfa_url")
