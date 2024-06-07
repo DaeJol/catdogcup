@@ -2,6 +2,7 @@ package com.daejol.data.repository
 
 import DataState
 import com.daejol.data.api.CatImagesApi
+import com.daejol.data.dto.Mapper.toDomain
 import com.daejol.domain.repository.CatImagesRepository
 import entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +15,7 @@ class CatImagesRepositoryImpl @Inject constructor(
     override suspend fun getCatRandomImages(imageCount: Int): Flow<DataState<List<ImageEntity>>> = flow {
         try {
             val catImages =
-                catImagesApi.getCatImages().body()?.map { it.toEntity() }?.toList()
+                catImagesApi.getCatImages().body()?.map { it.toDomain() }?.toList()
             println(catImages)
             emit(DataState.Success(data = catImages))
         } catch (e: Exception) {
