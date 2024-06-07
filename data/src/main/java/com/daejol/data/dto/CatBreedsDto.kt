@@ -86,11 +86,7 @@ data class CatBreedsDto(
     val weight: Weight?,
     @SerializedName("wikipedia_url")
     val wikipediaUrl: String?
-) {
-    fun toEntity(): BreedEntity {
-        return  Gson().fromJson(Gson().toJson(this), BreedEntity::class.java)
-    }
-}
+)
 
 data class Weight(
     @SerializedName("imperial")

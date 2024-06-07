@@ -17,18 +17,4 @@ data class CatImageDto(
     val height: Double?,
     @SerializedName("breeds")
     val breeds: List<CatBreedsDto>?
-) {
-    fun toEntity(): ImageEntity {
-        val breedsList = this.breeds?.map {
-            it.toEntity()
-        }?.toList()
-
-        return ImageEntity(
-            id = this.id,
-            url = this.url,
-            width = this.width,
-            height = this.height,
-            breeds = breedsList
-        )
-    }
-}
+)
