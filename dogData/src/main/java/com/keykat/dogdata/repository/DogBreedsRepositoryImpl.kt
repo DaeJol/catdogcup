@@ -8,7 +8,6 @@ import entity.BreedInfoEntity
 import entity.BreedTypeEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 import javax.inject.Inject
 
 class DogBreedsRepositoryImpl @Inject constructor(
