@@ -79,8 +79,8 @@ dependencies {
     androidTestImplementation libs.hilt.android.testing
     kaptAndroidTest(libs.hilt.android.compiler)
     kapt (libs.dagger.hilt.compiler)
+    implementation project(path: ':catData')
 
-    implementation project(path: ':data')
     implementation project(path: ':domain')
     implementation project(path: ':presentation')
 }
