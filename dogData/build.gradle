@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt.android)
 }
+
+apply plugin: 'com.google.dagger.hilt.android'
+apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.keykat.dogdata'
@@ -30,11 +34,50 @@ android {
 }
 
 dependencies {
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation libs.core
+    implementation libs.play.services.analytics
 
-    implementation libs.core.ktx
-    implementation libs.appcompat
-    implementation libs.material
-    testImplementation libs.junit
-    androidTestImplementation libs.junit.test
-    androidTestImplementation libs.espresso
+    // junit test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.test)
+    androidTestImplementation(libs.espresso)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.rxjava)
+
+    // OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    //coroutine Testing
+    testImplementation(libs.coroutine.test)
+
+    //mock server
+    testImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.mockwebserver)
+
+    //core Testing
+    androidTestImplementation(libs.test.ext)
+
+    // hilt
+    implementation(libs.hilt)
+    implementation(libs.hilt.compiler)
+
+    // hilt testing
+    implementation libs.hilt.android.testing
+
+    testImplementation libs.hilt.android.testing
+    testAnnotationProcessor libs.hilt.android.compiler
+    kaptTest(libs.hilt.android.compiler)
+
+    androidTestImplementation libs.hilt.android.testing
+    kaptAndroidTest(libs.hilt.android.compiler)
+    kapt (libs.dagger.hilt.compiler)
+
+    implementation project(path: ':domain')
 }

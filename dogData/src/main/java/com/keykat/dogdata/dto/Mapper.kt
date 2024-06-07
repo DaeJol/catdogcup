@@ -4,7 +4,7 @@ import entity.BreedEntity
 import entity.ImageEntity
 
 object Mapper {
-    fun CatBreedsDto.toDomain(): BreedEntity {
+    fun DogBreedsDto.toDomain(): BreedEntity {
         return BreedEntity(
             altNames = this.altNames,
             cfaUrl = this.cfaUrl,
@@ -19,7 +19,7 @@ object Mapper {
         )
     }
 
-    fun CatImageDto.toDomain(): ImageEntity {
+    fun DogImageDto.toDomain(): ImageEntity {
         return ImageEntity(
             id = this.id,
             url = this.url,

@@ -1,10 +1,8 @@
 package com.daejol.catdata.dto
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import entity.BreedEntity
 
-data class CatBreedsDto(
+data class DogBreedsDto(
     // TODO: 이렇게 SerializedName으로 json column명을 정의하고
     // TODO: 변수명은 camelCase를 사용하는 것이 좋을까?
     // TODO: 아니면 변수명도 통일하면 좋을까?
