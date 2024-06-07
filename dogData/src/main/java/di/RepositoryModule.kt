@@ -1,6 +1,6 @@
 package di
 
-import com.daejol.catdata.repository.CatImagesRepositoryImpl
+import com.daejol.catdata.repository.DogImagesRepositoryImpl
 import com.daejol.domain.repository.CatImagesRepository
 import dagger.Binds
 import dagger.Module
@@ -15,6 +15,6 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindsCatImagesRepository(
-        catImagesRepositoryImpl: CatImagesRepositoryImpl
+        catImagesRepositoryImpl: DogImagesRepositoryImpl
     ): CatImagesRepository
 }

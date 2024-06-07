@@ -1,7 +1,7 @@
 package di
 
 import com.daejol.catdata.api.ApiConst
-import com.daejol.catdata.api.CatImagesApi
+import com.daejol.catdata.api.DogImagesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,8 +44,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideCatImagesApi(retrofit: Retrofit): CatImagesApi {
-        return retrofit.create(CatImagesApi::class.java)
+    fun provideCatImagesApi(retrofit: Retrofit): DogImagesApi {
+        return retrofit.create(DogImagesApi::class.java)
     }
     class RetrofitInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
