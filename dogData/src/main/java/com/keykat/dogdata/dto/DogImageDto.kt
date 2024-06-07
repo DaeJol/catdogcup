@@ -12,5 +12,5 @@ data class DogImageDto(
     @SerializedName("height")
     val height: Double?,
     @SerializedName("breeds")
-    val breeds: List<CatBreedsDto>?
+    val breeds: List<DogBreedsDto>?
 )
