@@ -8,7 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,25 +16,25 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,11 +44,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.theme.Blue10
 import com.daejol.presentation.theme.Blue20
+import com.daejol.presentation.theme.CatdogcupTheme
 import com.daejol.presentation.theme.Green10
 import com.daejol.presentation.theme.Green20
-import com.daejol.presentation.theme.Yellow10
-import com.daejol.presentation.theme.CatdogcupTheme
 import com.daejol.presentation.theme.Typography
+import com.daejol.presentation.theme.Yellow10
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -126,7 +125,7 @@ fun MainScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CatOfTodayCard()
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_small)))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -143,7 +142,7 @@ fun MainScreen() {
                 )
                 MixedWorldCup(title = stringResource(id = R.string.mixed_world_cup), color = Yellow10)
             }
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_small)))
             PopularCatDog()
         }
     }
@@ -168,7 +167,7 @@ fun CatOfTodayCard() {
             Text(
                 text = stringResource(id = R.string.cat_of_today),
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp,
+                fontSize = dimensionResource(id = R.dimen.text_large).value.sp,
                 style = Typography.titleLarge
             )
             Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
@@ -178,14 +177,18 @@ fun CatOfTodayCard() {
                 Image(
                     painter = painterResource(id = R.drawable.sample_cat_of_today),
                     contentDescription = null,
-                    Modifier.size(128.dp)
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(128.dp)
+                        .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_corner_size)))
+                        .background(Color.White)
                 )
                 Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
                 Column {
                     Text(
                         text = "러시안 블루",
                         style = Typography.titleLarge,
-                        fontSize = 12.sp
+                        fontSize = dimensionResource(id = R.dimen.text_small).value.sp
                     )
                     Spacer(modifier = Modifier.size(8.dp))
                     Text(
@@ -240,7 +243,7 @@ fun SingleWorldCupCard(
             Text(
                 text = title,
                 textAlign = TextAlign.Center,
-                fontSize = 12.sp,
+                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
                 style = Typography.titleLarge
             )
         }
@@ -262,12 +265,28 @@ fun MixedWorldCup(
         modifier = Modifier
             .size(width = 125.dp, height = dimensionResource(id = R.dimen.world_cup_card_size))
     ) {
-        Text(
-            text = title,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_medium)),
-            textAlign = TextAlign.Center
-        )
+                .padding(dimensionResource(id = R.dimen.space_small))
+                .fillMaxWidth()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(Color.White)
+            )
+            Spacer(modifier = Modifier.size(2.dp))
+            Text(
+                text = title,
+                textAlign = TextAlign.Center,
+                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
+                style = Typography.titleLarge
+            )
+        }
     }
 }
 
@@ -281,15 +300,42 @@ fun PopularCatDog() {
             containerColor = Blue20
         ),
         modifier = Modifier
-            .height(100.dp)
+            .wrapContentHeight()
             .fillMaxWidth()
     ) {
-        Text(
-            text = "인기 고양이 & 강아지",
+        Column(
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_medium)),
-            textAlign = TextAlign.Center
-        )
+                .padding(dimensionResource(id = R.dimen.space_medium))
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = stringResource(id = R.string.popular_catdog),
+                fontSize = dimensionResource(id = R.dimen.text_large).value.sp,
+                style = Typography.titleLarge,
+                color = Color.White
+            )
+            Text(
+                text = stringResource(id = R.string.popular_catdog_desc),
+                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_small)))
+            LazyRow(
+                Modifier.height(160.dp)
+            ) {
+                item(5) {
+                    Image(
+                        painter = painterResource(id = R.drawable.sample_cat_of_today),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_corner_size)))
+                            .background(Color.White)
+                    )
+                }
+            }
+        }
     }
 }
 

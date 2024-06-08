@@ -7,4 +7,6 @@
     <string name="cat_world_cup">고양이\n월드컵</string>
     <string name="dog_world_cup">강아지\n월드컵</string>
     <string name="mixed_world_cup">혼합\n월드컵</string>
+    <string name="popular_catdog">인기 고양이 &amp; 강아지</string>
+    <string name="popular_catdog_desc">집사들이 뽑은 가장 인기 있는 고양이 사진이에요.</string>
 </resources>
