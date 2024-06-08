@@ -4,7 +4,7 @@
     <string name="app_bar_title">개냥컵</string>
     <string name="cat_of_today">오늘의 고양이 today's cat</string>
     <string name="cat_of_today_more">더보기</string>
-    <string name="cat_world_cup">고양이 월드컵</string>
-    <string name="dog_world_cup">강아지 월드컵</string>
-    <string name="mixed_world_cup">혼합 월드컵</string>
+    <string name="cat_world_cup">고양이\n월드컵</string>
+    <string name="dog_world_cup">강아지\n월드컵</string>
+    <string name="mixed_world_cup">혼합\n월드컵</string>
 </resources>

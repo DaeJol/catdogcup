@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,7 +33,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -127,8 +131,16 @@ fun MainScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                SingleWorldCupCard(stringResource(id = R.string.cat_world_cup), Yellow10)
-                SingleWorldCupCard(stringResource(id = R.string.dog_world_cup), Green10)
+                SingleWorldCupCard(
+                    stringResource(id = R.string.cat_world_cup),
+                    painterResource(id = R.drawable.ic_launcher_foreground),
+                    Yellow10
+                )
+                SingleWorldCupCard(
+                    stringResource(id = R.string.dog_world_cup),
+                    painterResource(id = R.drawable.ic_launcher_foreground),
+                    Green10
+                )
                 MixedWorldCup(title = stringResource(id = R.string.mixed_world_cup), color = Yellow10)
             }
             Spacer(modifier = Modifier.height(12.dp))
@@ -197,6 +209,7 @@ fun CatOfTodayCard() {
 @Composable
 fun SingleWorldCupCard(
     title: String,
+    painter: Painter,
     color: Color
 ) {
     ElevatedCard(
@@ -209,12 +222,28 @@ fun SingleWorldCupCard(
         modifier = Modifier
             .size(size = dimensionResource(id = R.dimen.world_cup_card_size))
     ) {
-        Text(
-            text = title,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_medium)),
-            textAlign = TextAlign.Center
-        )
+                .padding(dimensionResource(id = R.dimen.space_small))
+                .fillMaxWidth()
+        ) {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(Color.White)
+            )
+            Spacer(modifier = Modifier.size(2.dp))
+            Text(
+                text = title,
+                textAlign = TextAlign.Center,
+                fontSize = 12.sp,
+                style = Typography.titleLarge
+            )
+        }
     }
 }
 
