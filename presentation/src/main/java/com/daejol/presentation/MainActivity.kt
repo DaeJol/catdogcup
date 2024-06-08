@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,24 +15,30 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.daejol.presentation.theme.Blue10
 import com.daejol.presentation.theme.Blue20
 import com.daejol.presentation.theme.Green10
@@ -59,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    TopAppBar()
+                    MainScreen()
                 }
             }
         }
@@ -79,7 +87,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar() {
+fun MainScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -139,15 +147,50 @@ fun CatOfTodayCard() {
             containerColor = Green20
         ),
         modifier = Modifier
-            .height(100.dp)
+            .wrapContentHeight()
             .fillMaxWidth()
     ) {
-        Text(
-            text = stringResource(id = R.string.cat_of_today),
-            modifier = Modifier
-                .padding(16.dp),
-            textAlign = TextAlign.Center
-        )
+        Column(
+            Modifier.padding(dimensionResource(id = R.dimen.space_medium))
+        ) {
+            Text(
+                text = stringResource(id = R.string.cat_of_today),
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
+                style = Typography.titleLarge
+            )
+            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.sample_cat_of_today),
+                    contentDescription = null,
+                    Modifier.size(128.dp)
+                )
+                Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
+                Column {
+                    Text(
+                        text = "러시안 블루",
+                        style = Typography.titleLarge,
+                        fontSize = 12.sp
+                    )
+                    Spacer(modifier = Modifier.size(8.dp))
+                    Text(
+                        text = "복을 불러오는 고양이에요.\n" +
+                                "항상 다정다감하고 집사랑 잘 놀아주지만,\n" +
+                                "때때로 우울함에 빠져서 시무룩하고 잘 삐친답니다....",
+                        fontSize = 10.sp,
+                        lineHeight = 14.sp
+                    )
+                    Text(
+                        text = stringResource(id = R.string.cat_of_today_more),
+                        fontSize = 10.sp,
+                        modifier = Modifier.clickable { /* TODO */ }
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -164,12 +207,12 @@ fun SingleWorldCupCard(
             containerColor = color
         ),
         modifier = Modifier
-            .size(size = 100.dp)
+            .size(size = dimensionResource(id = R.dimen.world_cup_card_size))
     ) {
         Text(
             text = title,
             modifier = Modifier
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.space_medium)),
             textAlign = TextAlign.Center
         )
     }
@@ -188,12 +231,12 @@ fun MixedWorldCup(
             containerColor = color
         ),
         modifier = Modifier
-            .size(width = 125.dp, height = 100.dp)
+            .size(width = 125.dp, height = dimensionResource(id = R.dimen.world_cup_card_size))
     ) {
         Text(
             text = title,
             modifier = Modifier
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.space_medium)),
             textAlign = TextAlign.Center
         )
     }
@@ -215,7 +258,7 @@ fun PopularCatDog() {
         Text(
             text = "인기 고양이 & 강아지",
             modifier = Modifier
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.space_medium)),
             textAlign = TextAlign.Center
         )
     }
@@ -229,7 +272,7 @@ fun DefaultPreview() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            TopAppBar()
+            MainScreen()
         }
     }
 }

@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="space_x_small">8dp</dimen>
+    <dimen name="space_small">12dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="world_cup_card_size">104dp</dimen>
+</resources>
