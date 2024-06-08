@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -98,7 +99,7 @@ fun TopAppBar() {
                                 .size(28.dp),
                         )
                         Text(
-                            text = "개냥컵",
+                            text = stringResource(id = R.string.app_bar_title),
                             style = Typography.titleLarge
                         )
                     }
@@ -116,13 +117,11 @@ fun TopAppBar() {
             Spacer(modifier = Modifier.height(12.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween, // 여백 균등 분할
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                SingleWorldCupCard("고양이 월드컵", Yellow10)
-//                Spacer(modifier = Modifier.width(12.dp))
-                SingleWorldCupCard("강아지 월드컵", Green10)
-//                Spacer(modifier = Modifier.width(12.dp))
-                MixedWorldCup(title = "혼합 월드컵", color = Yellow10)
+                SingleWorldCupCard(stringResource(id = R.string.cat_world_cup), Yellow10)
+                SingleWorldCupCard(stringResource(id = R.string.dog_world_cup), Green10)
+                MixedWorldCup(title = stringResource(id = R.string.mixed_world_cup), color = Yellow10)
             }
             Spacer(modifier = Modifier.height(12.dp))
             PopularCatDog()
@@ -144,7 +143,7 @@ fun CatOfTodayCard() {
             .fillMaxWidth()
     ) {
         Text(
-            text = "오늘의 고양이",
+            text = stringResource(id = R.string.cat_of_today),
             modifier = Modifier
                 .padding(16.dp),
             textAlign = TextAlign.Center
