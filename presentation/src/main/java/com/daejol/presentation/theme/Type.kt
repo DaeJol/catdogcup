@@ -2,15 +2,28 @@ package com.daejol.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.daejol.presentation.R
+
+val oaGothic = FontFamily(
+    Font(R.font.oa_gothic_medium, FontWeight.Medium, FontStyle.Normal),
+    Font(R.font.oa_gothic_extra_bold, FontWeight.ExtraBold, FontStyle.Normal)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
+    titleLarge = TextStyle(
+        fontFamily = oaGothic,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 24.sp
+    ),
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = oaGothic,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp

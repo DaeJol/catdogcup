@@ -65,6 +65,10 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
 
+    implementation libs.material3
+    implementation "androidx.compose.material3:material3-window-size-class:1.2.1"
+    implementation libs.androidx.material3.adaptive.navigation.suite
+
     // hilt
     implementation(libs.hilt)
     implementation(libs.hilt.compiler)
