@@ -125,7 +125,7 @@ fun MainScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CatOfTodayCard()
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_small)))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_s)))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -142,7 +142,7 @@ fun MainScreen() {
                 )
                 MixedWorldCup(title = stringResource(id = R.string.mixed_world_cup), color = Yellow10)
             }
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_small)))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_s)))
             PopularCatDog()
         }
     }
@@ -162,15 +162,15 @@ fun CatOfTodayCard() {
             .fillMaxWidth()
     ) {
         Column(
-            Modifier.padding(dimensionResource(id = R.dimen.space_medium))
+            Modifier.padding(dimensionResource(id = R.dimen.space_m))
         ) {
             Text(
                 text = stringResource(id = R.string.cat_of_today),
                 textAlign = TextAlign.Center,
-                fontSize = dimensionResource(id = R.dimen.text_large).value.sp,
+                fontSize = dimensionResource(id = R.dimen.text_l).value.sp,
                 style = Typography.titleLarge
             )
-            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
+            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_m)))
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -183,12 +183,12 @@ fun CatOfTodayCard() {
                         .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_corner_size)))
                         .background(Color.White)
                 )
-                Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_medium)))
+                Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_m)))
                 Column {
                     Text(
                         text = "러시안 블루",
                         style = Typography.titleLarge,
-                        fontSize = dimensionResource(id = R.dimen.text_small).value.sp
+                        fontSize = dimensionResource(id = R.dimen.text_s).value.sp
                     )
                     Spacer(modifier = Modifier.size(8.dp))
                     Text(
@@ -228,7 +228,7 @@ fun SingleWorldCupCard(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_small))
+                .padding(dimensionResource(id = R.dimen.space_s))
                 .fillMaxWidth()
         ) {
             Image(
@@ -243,7 +243,7 @@ fun SingleWorldCupCard(
             Text(
                 text = title,
                 textAlign = TextAlign.Center,
-                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
+                fontSize = dimensionResource(id = R.dimen.text_s).value.sp,
                 style = Typography.titleLarge
             )
         }
@@ -268,7 +268,7 @@ fun MixedWorldCup(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_small))
+                .padding(dimensionResource(id = R.dimen.space_s))
                 .fillMaxWidth()
         ) {
             Image(
@@ -283,7 +283,7 @@ fun MixedWorldCup(
             Text(
                 text = title,
                 textAlign = TextAlign.Center,
-                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
+                fontSize = dimensionResource(id = R.dimen.text_s).value.sp,
                 style = Typography.titleLarge
             )
         }
@@ -305,21 +305,21 @@ fun PopularCatDog() {
     ) {
         Column(
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.space_medium))
+                .padding(dimensionResource(id = R.dimen.space_m))
                 .fillMaxWidth()
         ) {
             Text(
                 text = stringResource(id = R.string.popular_catdog),
-                fontSize = dimensionResource(id = R.dimen.text_large).value.sp,
+                fontSize = dimensionResource(id = R.dimen.text_l).value.sp,
                 style = Typography.titleLarge,
                 color = Color.White
             )
             Text(
                 text = stringResource(id = R.string.popular_catdog_desc),
-                fontSize = dimensionResource(id = R.dimen.text_small).value.sp,
+                fontSize = dimensionResource(id = R.dimen.text_s).value.sp,
                 color = Color.White
             )
-            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_small)))
+            Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.space_s)))
             LazyRow(
                 Modifier.height(160.dp)
             ) {
