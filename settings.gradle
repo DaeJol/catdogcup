@@ -15,6 +15,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "catdogcup"
 include ':app'
-include ':data'
+include ':catData'
 include ':domain'
 include ':presentation'
+include ':dogData'

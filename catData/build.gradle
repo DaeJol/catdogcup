@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
 }
@@ -8,7 +8,7 @@ apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    namespace 'com.daejol.catdogcup'
+    namespace 'com.daejol.catdata'
     compileSdk 34
 
     configurations {
@@ -16,16 +16,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.daejol.catdogcup"
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        testInstrumentationRunner "com.daejol.data.HiltTestRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -52,18 +47,32 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation libs.core
+    implementation libs.play.services.analytics
+
+    // junit test
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.test)
     androidTestImplementation(libs.espresso)
 
-    implementation(libs.lifecycle)
-    implementation(libs.compose)
-    implementation(libs.compose.material3)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.junit)
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.rxjava)
+
+    // OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    //coroutine Testing
+    testImplementation(libs.coroutine.test)
+
+    //mock server
+    testImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.mockwebserver)
+
+    //core Testing
+    androidTestImplementation(libs.test.ext)
 
     // hilt
     implementation(libs.hilt)
@@ -79,8 +88,6 @@ dependencies {
     androidTestImplementation libs.hilt.android.testing
     kaptAndroidTest(libs.hilt.android.compiler)
     kapt (libs.dagger.hilt.compiler)
-    implementation project(path: ':catData')
 
     implementation project(path: ':domain')
-    implementation project(path: ':presentation')
 }

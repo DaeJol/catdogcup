@@ -1,8 +1,8 @@
-package entity
+package com.daejol.catdata.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class ImageEntity(
+data class CatImageDto(
     @SerializedName("id")
     val id: String?,
     @SerializedName("url")
@@ -12,5 +12,5 @@ data class ImageEntity(
     @SerializedName("height")
     val height: Double?,
     @SerializedName("breeds")
-    val breeds: List<BreedInfoEntity>?
+    val breeds: List<CatBreedsDto>?
 )
