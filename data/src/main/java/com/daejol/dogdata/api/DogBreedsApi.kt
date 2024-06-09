@@ -1,8 +1,8 @@
-package com.keykat.dogdata.api
+package com.daejol.dogdata.api
 
 import com.daejol.catdata.dto.DogBreedsDto
 import com.daejol.catdata.dto.DogImageDto
-import com.keykat.dogdata.dto.DogBreedDto
+import com.daejol.dogdata.dto.DogBreedDto
 import retrofit2.http.GET
 
 public interface DogBreedsApi {

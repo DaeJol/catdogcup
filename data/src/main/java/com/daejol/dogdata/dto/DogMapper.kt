@@ -1,11 +1,11 @@
 package com.daejol.catdata.dto
 
-import com.keykat.dogdata.dto.DogBreedDto
+import com.daejol.dogdata.dto.DogBreedDto
 import entity.BreedInfoEntity
 import entity.BreedTypeEntity
 import entity.ImageEntity
 
-object Mapper {
+object DogMapper {
     fun DogBreedDto.toDomain(): BreedTypeEntity {
         return BreedTypeEntity(
             id = this.id,

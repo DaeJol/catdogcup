@@ -1,4 +1,4 @@
-package com.keykat.dogdata.dto
+package com.daejol.dogdata.dto
 
 import com.google.gson.annotations.SerializedName
 

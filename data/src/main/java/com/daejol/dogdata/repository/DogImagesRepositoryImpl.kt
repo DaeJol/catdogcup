@@ -2,7 +2,7 @@ package com.daejol.catdata.repository
 
 import DataState
 import com.daejol.catdata.api.DogImagesApi
-import com.daejol.catdata.dto.Mapper.toDomain
+import com.daejol.catdata.dto.DogMapper.toDomain
 import com.daejol.domain.repository.DogImagesRepository
 import entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
