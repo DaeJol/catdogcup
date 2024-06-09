@@ -81,12 +81,12 @@ data class CatBreedsDto(
     @SerializedName("vocalisation")
     val vocalisation: Int?,
     @SerializedName("weight")
-    val weight: Weight?,
+    val weight: CatWeight?,
     @SerializedName("wikipedia_url")
     val wikipediaUrl: String?
 )
 
-data class Weight(
+data class CatWeight(
     @SerializedName("imperial")
     val imperial: String?,
     @SerializedName("metric")

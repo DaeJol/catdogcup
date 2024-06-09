@@ -4,7 +4,7 @@ import entity.BreedInfoEntity
 import entity.BreedTypeEntity
 import entity.ImageEntity
 
-object Mapper {
+object CatMapper {
     fun CatBreedDto.toDomain(): BreedTypeEntity {
         return BreedTypeEntity(
             id = this.id,

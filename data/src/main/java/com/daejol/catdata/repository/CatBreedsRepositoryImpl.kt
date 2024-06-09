@@ -2,7 +2,7 @@ package com.daejol.catdata.repository
 
 import DataState
 import com.daejol.catdata.api.CatBreedsApi
-import com.daejol.catdata.dto.Mapper.toDomain
+import com.daejol.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatBreedsRepository
 import entity.BreedInfoEntity
 import entity.BreedTypeEntity
