@@ -1,6 +1,15 @@
 # catdogcup (개냥컵)
 고양이 &amp; 강아지 월드컵입니다.
 
+<img src="https://github.com/DaeJol/catdogcup/assets/26290540/393bd5fd-9f58-4294-80e4-5c81fafd49b6" width="240" height="500"/>
+
+<img src="https://github.com/DaeJol/catdogcup/assets/26290540/39d1a71c-8927-4a61-a4b5-abe23c6b060f" width="240" height="500"/>
+
+<img src="https://github.com/DaeJol/catdogcup/assets/26290540/4a54f126-d089-415b-83e9-397d57a9cb6c" width="240" height="500"/>
+
+
+
+
 
 ## [WorkLog]
 
