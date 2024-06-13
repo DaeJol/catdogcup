@@ -32,106 +32,104 @@ import com.daejol.presentation.theme.RichText
 import com.daejol.presentation.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
-class PersonalScreen {
-    @Composable
-    fun PersonalWidget() {
-        val configuration = LocalConfiguration.current
+@Composable
+fun PersonalWidget() {
+    val configuration = LocalConfiguration.current
 
-        val sh = configuration.screenHeightDp.dp
-        val sw = configuration.screenWidthDp.dp
+    val sh = configuration.screenHeightDp.dp
+    val sw = configuration.screenWidthDp.dp
 
-        return CatdogcupTheme(
-            statusBarColor = Orange80
-        ) {
-            // A surface container using the 'background' color from the theme
-            Column {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(sh / 3 * 2),
-                    color = Orange80
-                ) {
-                    Column(
-                        // 가운데 정렬하고
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        // 양쪽 벌어지게 만들고
-                        verticalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text(
-                            text = "나의 단짝을\n찾아보세요.",
-                            // CustomFontStyle에서 생성
-                            style = CustomTextStyle(
-                                fontFamily = Pretendard,
-                                fontSize = 30F,
-                                fontWeight = FontWeight.Bold,
-                                fontColor = White100
-                            ).style,
-                            // 텍스트의 top 패딩 주기
-                            modifier = Modifier.padding(top = 80.dp)
-                            //                        lineHeight = TextUnit(-10F, TextUnitType.Sp)
-                        )
-                        CustomRichText(
-                            listOf(
-                                RichText(text = "질문에 답변하고", endOfLine = true),
-                                RichText(text = "나와 성격이 비슷한", endOfLine = true),
-                                RichText(
-                                    text = "강아지",
-                                    textStyle = CustomTextStyle(
-                                        fontColor = White100,
-                                        fontFamily = Gimpo,
-                                        fontWeight = FontWeight.Normal
-                                    )
-
-                                ),
-                                RichText(text = "와 "),
-                                RichText(
-                                    text = "고양이",
-                                    textStyle = CustomTextStyle(
-                                        fontColor = White100,
-                                        fontFamily = Gimpo,
-                                        fontWeight = FontWeight.Normal
-                                    )
-                                ),
-                                RichText(text = "를 찾아보세요."),
-                                RichText(text = "\n\n준비 되셨나요?")
-                            ),
-                            textAlign = TextAlign.Center,
-                            defaultFontFamily = Pretendard,
-                            defaultTextSize = 18F,
-                            defaultFontWeight = FontWeight.Bold,
-                            defaultTextColor = Black80
-                        )
-                        // 스페이스 여백 공간 하나 만들고 (fillMax
-                        GlideImage(
-                            imageModel = R.drawable.personal_match_screen_1,
-                            modifier = Modifier
-                                .width(sw / 5 * 2)
-                                .aspectRatio(1.0F),
-                            alignment = Alignment.BottomCenter
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(20.dp))
-                Button(
-                    onClick = {},
-                    modifier = Modifier
-                        .width(sw / 3 * 2)
-                        .align(Alignment.CenterHorizontally),
-                    colors = ButtonColors(
-                        containerColor = Orange100,
-                        contentColor = Orange100,
-                        disabledContentColor = Orange100,
-                        disabledContainerColor = Orange100
-                    )
+    return CatdogcupTheme(
+        statusBarColor = Orange80
+    ) {
+        // A surface container using the 'background' color from the theme
+        Column {
+            Surface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(sh / 3 * 2),
+                color = Orange80
+            ) {
+                Column(
+                    // 가운데 정렬하고
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    // 양쪽 벌어지게 만들고
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "내 단짝 찾으러 가기",
-                        color = White100,
-                        fontFamily = Pretendard,
-                        fontWeight = FontWeight.Bold
+                        text = "나의 단짝을\n찾아보세요.",
+                        // CustomFontStyle에서 생성
+                        style = CustomTextStyle(
+                            fontFamily = Pretendard,
+                            fontSize = 30F,
+                            fontWeight = FontWeight.Bold,
+                            fontColor = White100
+                        ).style,
+                        // 텍스트의 top 패딩 주기
+                        modifier = Modifier.padding(top = 80.dp)
+                        //                        lineHeight = TextUnit(-10F, TextUnitType.Sp)
+                    )
+                    CustomRichText(
+                        listOf(
+                            RichText(text = "질문에 답변하고", endOfLine = true),
+                            RichText(text = "나와 성격이 비슷한", endOfLine = true),
+                            RichText(
+                                text = "강아지",
+                                textStyle = CustomTextStyle(
+                                    fontColor = White100,
+                                    fontFamily = Gimpo,
+                                    fontWeight = FontWeight.Normal
+                                )
+
+                            ),
+                            RichText(text = "와 "),
+                            RichText(
+                                text = "고양이",
+                                textStyle = CustomTextStyle(
+                                    fontColor = White100,
+                                    fontFamily = Gimpo,
+                                    fontWeight = FontWeight.Normal
+                                )
+                            ),
+                            RichText(text = "를 찾아보세요."),
+                            RichText(text = "\n\n준비 되셨나요?")
+                        ),
+                        textAlign = TextAlign.Center,
+                        defaultFontFamily = Pretendard,
+                        defaultTextSize = 18F,
+                        defaultFontWeight = FontWeight.Bold,
+                        defaultTextColor = Black80
+                    )
+                    // 스페이스 여백 공간 하나 만들고 (fillMax
+                    GlideImage(
+                        imageModel = R.drawable.personal_match_screen_1,
+                        modifier = Modifier
+                            .width(sw / 5 * 2)
+                            .aspectRatio(1.0F),
+                        alignment = Alignment.BottomCenter
                     )
                 }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .width(sw / 3 * 2)
+                    .align(Alignment.CenterHorizontally),
+                colors = ButtonColors(
+                    containerColor = Orange100,
+                    contentColor = Orange100,
+                    disabledContentColor = Orange100,
+                    disabledContainerColor = Orange100
+                )
+            ) {
+                Text(
+                    text = "내 단짝 찾으러 가기",
+                    color = White100,
+                    fontFamily = Pretendard,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }

@@ -12,13 +12,13 @@ class PersonalActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PersonalScreen().PersonalWidget()
+            PersonalWidget()
         }
     }
 
     @Preview(showBackground = true)
     @Composable
     fun DefaultPreview() {
-        PersonalScreen().PersonalWidget()
+        PersonalWidget()
     }
 }
