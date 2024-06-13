@@ -29,6 +29,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name="com.daejol.presentation.personalMatchScreen.PersonalActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Catdogcup">
+        </activity>
     </application>
 
 </manifest>
