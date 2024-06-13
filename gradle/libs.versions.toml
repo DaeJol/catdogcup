@@ -9,6 +9,7 @@ hilt = "2.51.1"
 hiltCompiler = "1.2.0"
 
 # data layer
+material3AdaptiveNavigationSuite = "1.0.0-alpha07"
 retrofit2 = "2.9.0"
 okhttp = "4.10.0"
 ktx = "1.13.1"
@@ -35,6 +36,8 @@ compose-glide = "1.4.7"
 [libraries]
 # {groupId}:{artifactId}:{version}
 
+androidx-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3AdaptiveNavigationSuite" }
+material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }

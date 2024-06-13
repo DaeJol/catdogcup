@@ -20,3 +20,10 @@ val White100 = Color(0xFFFFFFFF)
 
 val Black100 = Color(0xFF000000)
 val Black80 = Color(0xFF161616)
+
+val Blue10 = Color(0xFF586994)
+val Blue20 = Color(0xFF7987A9)
+val Grey10 = Color(0xFF7D869C)
+val Green10 = Color(0xFFB4C4AE)
+val Green20 = Color(0xFFCBD6C7)
+val Yellow10 = Color(0xFFE5E8B6)
