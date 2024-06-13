@@ -1,16 +1,24 @@
 package com.daejol.presentation.theme
 
-import android.content.res.Configuration
 import androidx.compose.material3.Typography
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.daejol.presentation.R
+
+
 
 // Set of Material typography styles to start with
 val Typography = Typography(
+    // "카테고리" 이렇게 적혀있는 타이틀에 사용하는 폰트
+    headlineLarge = TextStyle(
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp
+    ),
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -35,3 +43,4 @@ val Typography = Typography(
     )
     */
 )
+
