@@ -28,6 +28,10 @@ kotlinBom = "1.8.22"
 core = "1.42.0"
 playServicesAnalytics = "18.0.4"
 
+coil = "0.10.0"
+glide = "3.7.0"
+compose-glide = "1.4.7"
+
 [libraries]
 # {groupId}:{artifactId}:{version}
 
@@ -69,7 +73,9 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3-an
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBom" }
 core = { group = "com.google.ar", name = "core", version.ref = "core" }
 play-services-analytics = { group = "com.google.android.gms", name = "play-services-analytics", version.ref = "playServicesAnalytics" }
-
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+compose-glide = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "compose-glide" }
 
 
 [plugins]
