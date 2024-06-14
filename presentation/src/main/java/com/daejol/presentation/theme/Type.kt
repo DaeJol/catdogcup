@@ -21,6 +21,12 @@ val Typography = Typography(
         fontWeight = FontWeight.ExtraBold,
         fontSize = 24.sp
     ),
+    // "카테고리" 이렇게 적혀있는 타이틀에 사용하는 폰트
+    headlineLarge = TextStyle(
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp
+    ),
     bodyLarge = TextStyle(
         fontFamily = oaGothic,
         fontWeight = FontWeight.Medium,
@@ -45,3 +51,5 @@ val Typography = Typography(
     )
     */
 )
+
+

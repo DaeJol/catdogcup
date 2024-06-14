@@ -78,5 +78,9 @@ dependencies {
     kaptAndroidTest(libs.hilt.android.compiler)
     kapt (libs.dagger.hilt.compiler)
 
+    implementation(libs.coil)
+    implementation(libs.glide)
+    implementation(libs.compose.glide)
+
     implementation project(path: ':domain')
 }
