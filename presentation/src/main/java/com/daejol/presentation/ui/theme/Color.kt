@@ -1,4 +1,4 @@
-package com.daejol.presentation.theme
+package com.daejol.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

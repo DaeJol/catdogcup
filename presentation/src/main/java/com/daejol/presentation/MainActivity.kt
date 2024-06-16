@@ -42,13 +42,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.daejol.presentation.theme.Blue10
-import com.daejol.presentation.theme.Blue20
-import com.daejol.presentation.theme.CatdogcupTheme
-import com.daejol.presentation.theme.Green10
-import com.daejol.presentation.theme.Green20
-import com.daejol.presentation.theme.Typography
-import com.daejol.presentation.theme.Yellow10
+import com.daejol.presentation.ui.theme.Blue10
+import com.daejol.presentation.ui.theme.Blue20
+import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.ui.theme.Green10
+import com.daejol.presentation.ui.theme.Green20
+import com.daejol.presentation.ui.theme.Typography
+import com.daejol.presentation.ui.theme.Yellow10
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -102,7 +102,7 @@ fun MainScreen() {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // TODO: coil, glide 라이브러리 사용
+                        // TODO: coil 라이브러리 사용
                         Image(
                             painter = painterResource(id = R.drawable.catdog_app_bar_icon),
                             contentDescription = null,
