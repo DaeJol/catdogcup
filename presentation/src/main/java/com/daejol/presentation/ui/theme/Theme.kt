@@ -1,4 +1,4 @@
-package com.daejol.presentation.theme
+package com.daejol.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

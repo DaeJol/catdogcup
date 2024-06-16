@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">catdogcup</string>
 
+    <!-- Screen -->
+    <string name="home">홈</string>
+    <string name="category">카테고리</string>
+    <string name="bookmark">북마크</string>
+    <string name="my_page">마이페이지</string>
+
+    <!-- Home Screen -->
     <string name="app_bar_title">개냥컵</string>
     <string name="cat_of_today">오늘의 고양이 today\'s cat</string>
     <string name="cat_of_today_more">더보기</string>
