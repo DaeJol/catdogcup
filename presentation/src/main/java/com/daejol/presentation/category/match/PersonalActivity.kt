@@ -1,4 +1,4 @@
-package com.daejol.presentation.personalMatchScreen
+package com.daejol.presentation.category.match
 
 import android.os.Bundle
 import androidx.activity.compose.setContent

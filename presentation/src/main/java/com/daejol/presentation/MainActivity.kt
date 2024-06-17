@@ -25,7 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.home.HomeScreen
-import com.daejol.presentation.personalMatchScreen.PersonalWidget
+import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

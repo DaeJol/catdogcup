@@ -31,7 +31,7 @@
         </activity>
 
         <activity
-            android:name="com.daejol.presentation.personalMatchScreen.PersonalActivity"
+            android:name="com.daejol.presentation.category.match.PersonalActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Catdogcup">
