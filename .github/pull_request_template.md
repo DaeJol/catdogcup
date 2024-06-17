@@ -15,7 +15,7 @@
 
 ## work result
 <!-- 눈에 띄는 결과물이 있어서 첨부하고 싶으면 적어주세요! -->
-<img src="https://github.com/DaeJol/catdogcup/assets/26290540/4ab29178-1610-486e-a211-be1fdf1446ac" width="300" height="650"/>
+<!-- <img src="https://github.com/DaeJol/catdogcup/assets/26290540/4ab29178-1610-486e-a211-be1fdf1446ac" width="300" height="650"/> -->
 
 ## code discussion / review request / concern
 <!-- 같이 고민하고자 하는 것이 있거나, 전체 리뷰가 필요하거나 (혹은 부분 리뷰만 필요하거나), 고민에 대한 공유 등등 내용을 적어주세요 -->
