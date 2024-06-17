@@ -20,16 +20,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
-import com.daejol.presentation.theme.Black80
-import com.daejol.presentation.theme.CatdogcupTheme
-import com.daejol.presentation.theme.CustomRichText
-import com.daejol.presentation.theme.CustomTextStyle
-import com.daejol.presentation.theme.Gimpo
-import com.daejol.presentation.theme.Orange100
-import com.daejol.presentation.theme.Orange80
-import com.daejol.presentation.theme.Pretendard
-import com.daejol.presentation.theme.RichText
-import com.daejol.presentation.theme.White100
+import com.daejol.presentation.ui.theme.Black80
+import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.ui.theme.CustomRichText
+import com.daejol.presentation.ui.theme.CustomTextStyle
+import com.daejol.presentation.ui.theme.Gimpo
+import com.daejol.presentation.ui.theme.Orange100
+import com.daejol.presentation.ui.theme.Orange80
+import com.daejol.presentation.ui.theme.Pretendard
+import com.daejol.presentation.ui.theme.RichText
+import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable

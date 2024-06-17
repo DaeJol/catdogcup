@@ -2,14 +2,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
-    alias(libs.plugins.safeargs.kotlin)
 }
 
 apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    namespace 'com.daejol.presentation'
+    namespace 'com.daejol.data'
     compileSdk 34
 
     configurations {
@@ -19,6 +18,9 @@ android {
     defaultConfig {
         minSdk 26
         targetSdk 34
+
+        testInstrumentationRunner "com.daejol.data.HiltTestRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -34,12 +36,6 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
-    }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -51,18 +47,32 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation libs.core
+    implementation libs.play.services.analytics
+
+    // junit test
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.test)
     androidTestImplementation(libs.espresso)
 
-    implementation(libs.lifecycle)
-    implementation(libs.compose)
-    implementation(libs.compose.material3)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.junit)
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.rxjava)
+
+    // OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    //coroutine Testing
+    testImplementation(libs.coroutine.test)
+
+    //mock server
+    testImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.mockwebserver)
+
+    //core Testing
+    androidTestImplementation(libs.test.ext)
 
     // hilt
     implementation(libs.hilt)
@@ -78,15 +88,6 @@ dependencies {
     androidTestImplementation libs.hilt.android.testing
     kaptAndroidTest(libs.hilt.android.compiler)
     kapt (libs.dagger.hilt.compiler)
-
-    implementation(libs.coil)
-    implementation(libs.glide)
-    implementation(libs.compose.glide)
-
-    implementation libs.androidx.navigation.fragment.ktx
-    implementation libs.androidx.navigation.ui.ktx
-    implementation libs.androidx.navigation.compose
-    implementation libs.androidx.material
 
     implementation project(path: ':domain')
 }
