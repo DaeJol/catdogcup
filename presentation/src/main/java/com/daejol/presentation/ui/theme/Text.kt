@@ -1,13 +1,15 @@
 package com.daejol.presentation.ui.theme
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.SpanStyle
@@ -18,8 +20,26 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
+import com.daejol.presentation.common.data.px
+import com.daejol.presentation.common.data.sp
+import com.daejol.presentation.ui.theme.RichTextScope.isEndOfLine
+import com.daejol.presentation.ui.theme.RichTextScope.richTextContent
+
+/** CustomRichText에 담을 자식 클래스입니다.
+ * @param text 단순히 텍스트를 담아주세요.
+ * @param textStyle 스타일을 넣어주세요. []CustomTextStyle] 클래스를 사용해주세요.
+ * @param endOfLine 다음 줄로 줄바꿈하고 싶을 때 true를 해주세요.
+ */
+@Deprecated("CustomRichText v1용으로 사용하던 클래스.")
+open class RichText(
+    val text: String = "",
+    val textStyle: CustomTextStyle = CustomTextStyle(),
+    val endOfLine: Boolean = false,
+)
 
 /**한 줄의 텍스트에 여러 스타일을 적용하고 싶을 때 사용합니다.
  *
@@ -42,7 +62,7 @@ fun CustomRichText(
     defaultFontFamily: FontFamily = Pretendard,
     defaultFontWeight: FontWeight = FontWeight.Normal,
     textAlign: TextAlign = TextAlign.Left,
-    content: @Composable() (ColumnScope.() -> Unit)
+    content: @Composable (ColumnScope.() -> Unit)
 ) {
     return Text(
         buildAnnotatedString {
@@ -70,6 +90,99 @@ fun CustomRichText(
     )
 }
 
+class RichTextDecoration(
+    val background: Color = Color.Transparent,
+    val padding: Padding = Padding(),
+    val borderRadius: BorderRadius = BorderRadius()
+)
+
+class BorderRadius(
+    val topLeft: Float = 0f,
+    val topRight: Float = 0f,
+    val bottomLeft: Float = 0f,
+    val bottomRight: Float = 0f
+)
+
+class Padding(
+    val left: Float = 0f,
+    val top: Float = 0f,
+    val right: Float = 0f,
+    val bottom: Float = 0f
+)
+
+object RichTextScope {
+    private val items = mutableListOf<RichTextInstance>()
+
+    @Composable
+    fun RichText(
+        text: String,
+        textStyle: CustomTextStyle = CustomTextStyle(),
+        endOfLine: Boolean = false,
+        lineHeight: Dp = 0.dp,
+        decoration: RichTextDecoration = RichTextDecoration()
+    ) {
+        val richText = RichTextInstance(
+            text = text,
+            textStyle = textStyle,
+            endOfLine = endOfLine,
+            lineHeight = lineHeight,
+            decoration = decoration
+        )
+
+        items.add(richText)
+    }
+
+    private class RichTextInstance(
+        val text: String = "",
+        val textStyle: CustomTextStyle = CustomTextStyle(),
+        val endOfLine: Boolean = false,
+        val lineHeight: Dp = 0.dp,
+        val decoration: RichTextDecoration = RichTextDecoration()
+    )
+
+
+    fun richTextContent(): @Composable () -> Unit {
+        return {
+            items.forEach {
+                val text = it.text + if (it.endOfLine) "\n" else ""
+
+                Box(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        // clip 다음에 background를 선언해줘야 색상이 선언된 후 clip이 적용됨
+                        .clip(
+                            RoundedCornerShape(
+                                it.decoration.borderRadius.topLeft,
+                                it.decoration.borderRadius.topRight,
+                                it.decoration.borderRadius.bottomLeft,
+                                it.decoration.borderRadius.bottomRight
+                            )
+                        )
+                        .background(color = it.decoration.background)
+                        .padding(
+                            it.decoration.padding.left.dp,
+                            it.decoration.padding.top.dp,
+                            it.decoration.padding.right.dp,
+                            it.decoration.padding.bottom.dp,
+                        )
+                ) {
+                    Text(
+                        modifier = Modifier.wrapContentSize(),
+                        text = text,
+                        style = it.textStyle.style,
+                        lineHeight = it.lineHeight.sp(),
+                    )
+                }
+            }
+        }
+    }
+
+    fun isEndOfLine(index: Int): Boolean {
+        val item = items[index]
+        return item.endOfLine
+    }
+}
+
 @Composable
 fun CustomRichText(
     defaultTextSize: Float = 14F,
@@ -77,91 +190,37 @@ fun CustomRichText(
     defaultFontFamily: FontFamily = Pretendard,
     defaultFontWeight: FontWeight = FontWeight.Normal,
     textAlign: TextAlign = TextAlign.Left,
-    content: @Composable () -> Unit
+    content: @Composable RichTextScope.() -> Unit
 ) {
-    print("[keykat $content")
+    RichTextScope.content()
+    val richContent = richTextContent()
 
 
     return Layout(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        content = content
+        modifier = Modifier.wrapContentSize(),
+        content = richContent,
     ) { measurables, constraints ->
-        // Don't constrain child views further, measure them with given constraints
-        // List of measured children
         val placeables = measurables.map { measurable ->
-            // Measure each children
             measurable.measure(constraints)
         }
 
-        // Set the size of the layout as big as it can
         layout(constraints.maxWidth, constraints.maxHeight) {
-            // Track the y co-ord we have placed children up to
             var xPosition = 0
             var yPosition = 0
 
-            // Place children in the parent layout
-            placeables.forEach { placeable ->
-                // Position item on the screen
-                placeable.placeRelative(x = 0, y = yPosition)
+            placeables.forEachIndexed { index, placeable ->
+                placeable.placeRelative(x = xPosition, y = yPosition)
 
-                // Record the y co-ord placed up to
-//                xPosition += placeable.width
-                yPosition += placeable.height
+                if (isEndOfLine(index)) {
+                    xPosition = 0
+                    yPosition += placeable.height
+                } else {
+                    xPosition += placeable.width
+                }
             }
         }
     }
-
-
-//
-//    return Column {
-//        Row {
-//            Text("saksksakaskk")
-//            Text("fkdsjfdskfkdjsfskdjsdkfjk")
-//        }
-//        Text("sdfdsfas")
-//        Text("sdfdsafsdafdsafdsas")
-//    }
-//
-//    return Text(
-//        buildAnnotatedString {
-//            texts.forEach {
-//                //
-//                val spanStyle = SpanStyle(
-//                    color = it.textStyle.fontColor ?: defaultTextColor,
-//                    fontWeight = it.textStyle.fontWeight ?: defaultFontWeight,
-//                    fontSize = it.textStyle.fontSize?.sp ?: defaultTextSize.sp,
-//                    fontFamily = it.textStyle.fontFamily ?: defaultFontFamily,
-//                    background = Orange100,
-//
-//                    )
-//
-//                withStyle(style = spanStyle) {
-//                    append(it.text)
-//                }
-//
-//                if (it.endOfLine) {
-//                    append("\n")
-//                }
-//            }
-//        },
-//        textAlign = textAlign
-//    )
 }
-
-
-/** CustomRichText에 담을 자식 클래스입니다.
- * @param text 단순히 텍스트를 담아주세요.
- * @param textStyle 스타일을 넣어주세요. []CustomTextStyle] 클래스를 사용해주세요.
- * @param endOfLine 다음 줄로 줄바꿈하고 싶을 때 true를 해주세요.
- */
-open class RichText(
-    val text: String = "",
-    val textStyle: CustomTextStyle = CustomTextStyle(),
-    val endOfLine: Boolean = false,
-    val decoration: @Composable (() -> Unit)? = null,
-)
 
 val Pretendard = FontFamily(
     fonts = listOf(
