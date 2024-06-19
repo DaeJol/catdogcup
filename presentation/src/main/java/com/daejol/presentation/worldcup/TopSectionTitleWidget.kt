@@ -1,15 +1,16 @@
 package com.daejol.presentation.worldcup
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
+import com.daejol.presentation.ui.theme.BorderRadius
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
-import com.daejol.presentation.ui.theme.RichText
+import com.daejol.presentation.ui.theme.Orange100
+import com.daejol.presentation.ui.theme.Padding
+import com.daejol.presentation.ui.theme.RichTextDecoration
 import com.daejol.presentation.ui.theme.White100
 
 @Preview
@@ -40,8 +41,13 @@ fun TopSectionTitleWidget() {
         RichText("어떤 고양이를", textStyle = subTitleTextStyle, endOfLine = true)
         RichText("골라볼까요?", textStyle = subTitleTextStyle, endOfLine = true)
         RichText("", endOfLine = true)
-        RichText("월드컵 방식", textStyle = descTextStyle1) {
-        }
+        RichText(
+            "월드컵 방식", textStyle = descTextStyle1, decoration = RichTextDecoration(
+                background = Orange100,
+                borderRadius = BorderRadius(100f, 100f, 100f, 100f),
+                padding = Padding(6f, 2f, 6f, 2f)
+            )
+        )
         RichText("을 지정해주세요.", textStyle = descTextStyle2)
     }
 }
