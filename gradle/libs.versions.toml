@@ -32,7 +32,7 @@ core = "1.42.0"
 playServicesAnalytics = "18.0.4"
 
 coil = "0.10.0"
-glide = "3.7.0"
+glide = "4.13.0"
 compose-glide = "1.4.7"
 
 [libraries]
