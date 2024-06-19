@@ -69,37 +69,37 @@ fun PersonalWidget() {
                         modifier = Modifier.padding(top = 80.dp)
                         //                        lineHeight = TextUnit(-10F, TextUnitType.Sp)
                     )
-                    CustomRichText(
-                        listOf(
-                            RichText(text = "질문에 답변하고", endOfLine = true),
-                            RichText(text = "나와 성격이 비슷한", endOfLine = true),
-                            RichText(
-                                text = "강아지",
-                                textStyle = CustomTextStyle(
-                                    fontColor = White100,
-                                    fontFamily = Gimpo,
-                                    fontWeight = FontWeight.Normal
-                                )
-
-                            ),
-                            RichText(text = "와 "),
-                            RichText(
-                                text = "고양이",
-                                textStyle = CustomTextStyle(
-                                    fontColor = White100,
-                                    fontFamily = Gimpo,
-                                    fontWeight = FontWeight.Normal
-                                )
-                            ),
-                            RichText(text = "를 찾아보세요."),
-                            RichText(text = "\n\n준비 되셨나요?")
-                        ),
-                        textAlign = TextAlign.Center,
-                        defaultFontFamily = Pretendard,
-                        defaultTextSize = 18F,
-                        defaultFontWeight = FontWeight.Bold,
-                        defaultTextColor = Black80
-                    )
+//                    CustomRichText(
+//                        listOf(
+//                            RichText(text = "질문에 답변하고", endOfLine = true),
+//                            RichText(text = "나와 성격이 비슷한", endOfLine = true),
+//                            RichText(
+//                                text = "강아지",
+//                                textStyle = CustomTextStyle(
+//                                    fontColor = White100,
+//                                    fontFamily = Gimpo,
+//                                    fontWeight = FontWeight.Normal
+//                                )
+//
+//                            ),
+//                            RichText(text = "와 "),
+//                            RichText(
+//                                text = "고양이",
+//                                textStyle = CustomTextStyle(
+//                                    fontColor = White100,
+//                                    fontFamily = Gimpo,
+//                                    fontWeight = FontWeight.Normal
+//                                )
+//                            ),
+//                            RichText(text = "를 찾아보세요."),
+//                            RichText(text = "\n\n준비 되셨나요?")
+//                        ),
+//                        textAlign = TextAlign.Center,
+//                        defaultFontFamily = Pretendard,
+//                        defaultTextSize = 18F,
+//                        defaultFontWeight = FontWeight.Bold,
+//                        defaultTextColor = Black80
+//                    )
                     // 스페이스 여백 공간 하나 만들고 (fillMax
                     GlideImage(
                         imageModel = R.drawable.personal_match_screen_1,
