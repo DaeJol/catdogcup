@@ -11,7 +11,14 @@ class WorldCupViewModel @Inject constructor(): ViewModel() {
     private val _worldCupLevel = mutableStateOf("16강")
     val worldCupLevel: State<String> = _worldCupLevel
 
+    private val _imageType = mutableStateOf("무작위")
+    val imageType: State<String> = _imageType
+
     fun setLevel(level: String) {
         _worldCupLevel.value = level
+    }
+
+    fun setImageSelection(imageType: String) {
+        _imageType.value = imageType
     }
 }
