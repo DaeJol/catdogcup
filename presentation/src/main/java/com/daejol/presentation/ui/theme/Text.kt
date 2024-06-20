@@ -24,10 +24,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
-import com.daejol.presentation.common.data.px
 import com.daejol.presentation.common.data.sp
-import com.daejol.presentation.ui.theme.RichTextScope.isEndOfLine
-import com.daejol.presentation.ui.theme.RichTextScope.richTextContent
 
 /** CustomRichText에 담을 자식 클래스입니다.
  * @param text 단순히 텍스트를 담아주세요.
@@ -110,7 +107,9 @@ class Padding(
     val bottom: Float = 0f
 )
 
-object RichTextScope {
+/// 2024.06.21 이거 object로 만드니까 rebuild할 때 items가 초기화가 안되어서
+/// rebuild할 때마다 위젯이 복사되는 문제가 있음 (items에 아이템을 계속 넣으니까)
+class RichTextScope {
     private val items = mutableListOf<RichTextInstance>()
 
     @Composable
@@ -192,8 +191,9 @@ fun CustomRichText(
     textAlign: TextAlign = TextAlign.Left,
     content: @Composable RichTextScope.() -> Unit
 ) {
-    RichTextScope.content()
-    val richContent = richTextContent()
+    var scope = RichTextScope()
+    scope.content()
+    val richContent = scope.richTextContent()
 
 
     return Layout(
@@ -211,7 +211,7 @@ fun CustomRichText(
             placeables.forEachIndexed { index, placeable ->
                 placeable.placeRelative(x = xPosition, y = yPosition)
 
-                if (isEndOfLine(index)) {
+                if (scope.isEndOfLine(index)) {
                     xPosition = 0
                     yPosition += placeable.height
                 } else {
