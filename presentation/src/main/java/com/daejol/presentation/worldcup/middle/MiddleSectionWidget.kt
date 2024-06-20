@@ -33,6 +33,7 @@ fun MiddleSectionWidget(
     ) {
         MiddleDropDownSelectionWidget(
             content = "몇 강까지 진행할까요?",
+            state = viewModel.worldCupLevel,
             menus = listOf(
                 DropdownItems(text = "16강", onClick = { viewModel.setLevel("16강") }),
                 DropdownItems(text = "32강", onClick = { viewModel.setLevel("32강") }),
@@ -42,16 +43,15 @@ fun MiddleSectionWidget(
             ),
         )
 
-//        MiddleDropDownSelectionWidget(
-//            content = "이미지는 어떻게 고를까요?",
-//            dropDownMenuItems = {
-//                Text("16강")
-//                Text("32강")
-//                Text("64강")
-//                Text("128강")
-//                Text("256강")
-//            }
-//        )
+        MiddleDropDownSelectionWidget(
+            content = "이미지는 어떻게 고를까요?",
+            state = viewModel.imageType,
+            menus = listOf(
+                DropdownItems(text = "무작위", onClick = { viewModel.setImageSelection("무작위") }),
+                DropdownItems(text = "북마크", onClick = { viewModel.setImageSelection("북마크") }),
+                DropdownItems(text = "인기 순위", onClick = { viewModel.setImageSelection("인기 순위") }),
+            ),
+        )
 
         MiddleToggleSelectionWidget(
             content = "결과를 내 북마크에\n저장할까요?"
