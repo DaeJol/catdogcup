@@ -85,6 +85,8 @@ play-services-analytics = { group = "com.google.android.gms", name = "play-servi
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 compose-glide = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "compose-glide" }
+hilt-viewmodel = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.0.0-alpha03" }
+
 
 
 [plugins]
