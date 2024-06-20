@@ -14,11 +14,25 @@ class WorldCupViewModel @Inject constructor(): ViewModel() {
     private val _imageType = mutableStateOf("무작위")
     val imageType: State<String> = _imageType
 
+    private val _bookmark = mutableStateOf(true)
+    val bookmark: State<Boolean> = _bookmark
+
+    private val _share = mutableStateOf(true)
+    val share: State<Boolean> = _share
+
     fun setLevel(level: String) {
         _worldCupLevel.value = level
     }
 
     fun setImageSelection(imageType: String) {
         _imageType.value = imageType
+    }
+
+    fun saveBookmark(save: Boolean) {
+        _bookmark.value = save
+    }
+
+    fun allowShare(share: Boolean) {
+        _share.value = share
     }
 }

@@ -54,11 +54,15 @@ fun MiddleSectionWidget(
         )
 
         MiddleToggleSelectionWidget(
-            content = "결과를 내 북마크에\n저장할까요?"
+            content = "결과를 내 북마크에\n저장할까요?",
+            state = viewModel.bookmark,
+            onSwitch = { viewModel.saveBookmark(it) }
         )
 
         MiddleToggleSelectionWidget(
-            content = "결과를 다른 사람들과도\n공유하시겠어요?"
+            content = "결과를 다른 사람들과도\n공유하시겠어요?",
+            state = viewModel.share,
+            onSwitch = { viewModel.allowShare(it) }
         )
     }
 }
