@@ -16,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,6 +35,7 @@ import com.daejol.presentation.worldcup.WorldCupViewModel
 @Composable
 fun MiddleDropDownSelectionWidget(
     content: String,
+    state: State<String>,
     viewModel: WorldCupViewModel = viewModel(),
     menus: List<DropdownItems>
 ) {
@@ -56,7 +58,7 @@ fun MiddleDropDownSelectionWidget(
             Row(
                 horizontalArrangement = Arrangement.End
             ) {
-                Text(text = viewModel.worldCupLevel.value)
+                Text(text = state.value)
                 Icon(
                     Icons.Rounded.ArrowDropDown,
                     contentDescription = "몇 강까지 진행할까요?",
