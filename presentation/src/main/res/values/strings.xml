@@ -8,7 +8,9 @@
     <string name="my_page">마이페이지</string>
 
     <!-- Home Screen -->
-    <string name="app_bar_title">개냥컵</string>
+    <string name="home_app_bar_title">개냥컵</string>
+    <string name="home_app_bar_search">검색</string>
+    <string name="home_app_bar_my_page">마이페이지</string>
     <string name="cat_of_today">오늘의 고양이 today\'s cat</string>
     <string name="cat_of_today_more">더보기</string>
     <string name="cat_world_cup_title">최애 주인님은 누구?</string>
