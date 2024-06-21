@@ -28,7 +28,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange80
@@ -49,7 +48,7 @@ fun HomeScreen() {
                             contentDescription = stringResource(R.string.home_app_bar_title),
                             colorFilter = ColorFilter.tint(Orange80),
                             modifier = Modifier
-                                .width(64.dp)
+                                .width(dimensionResource(id = R.dimen.home_app_bar_title_width))
                                 .fillMaxHeight()
                         )
                     }
