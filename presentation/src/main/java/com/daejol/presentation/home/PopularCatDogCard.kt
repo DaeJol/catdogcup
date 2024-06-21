@@ -15,7 +15,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -38,7 +38,8 @@ import com.daejol.presentation.ui.theme.secondaryLight
 
 @Composable
 fun PopularCatDogCard(
-    catdog: Catdog = Catdog("Russian Blue", 1)
+    catdog: Catdog = Catdog("Russian Blue", 1),
+    width: Dp = 140.dp
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -49,7 +50,7 @@ fun PopularCatDogCard(
         ),
         modifier = Modifier
             .wrapContentHeight()
-            .fillMaxWidth()
+            .width(width)
     ) {
         Column(
             modifier = Modifier
@@ -118,10 +119,6 @@ fun PopularCatDogCard(
 @Composable
 fun PopularCatDogCardPreView() {
     CatdogcupTheme {
-        Surface(
-            modifier = Modifier.width(140.dp)
-        ) {
-            PopularCatDogCard()
-        }
+        PopularCatDogCard()
     }
 }
