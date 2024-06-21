@@ -1,6 +1,5 @@
 package com.daejol.presentation.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -38,7 +37,9 @@ import com.daejol.presentation.ui.theme.White100
 import com.daejol.presentation.ui.theme.secondaryLight
 
 @Composable
-fun PopularCatDogCard() {
+fun PopularCatDogCard(
+    catdog: Catdog = Catdog("Russian Blue", 1)
+) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
@@ -74,7 +75,7 @@ fun PopularCatDogCard() {
                     )
             ) {
                 Text(
-                    text = "CAT NO.1",
+                    text = "CAT NO.${catdog.ranking}",
                     fontSize = dimensionResource(id = R.dimen.text_xxxs).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,
@@ -82,7 +83,7 @@ fun PopularCatDogCard() {
                     lineHeight = 8.sp
                 )
                 Text(
-                    text = "RUSSIAN BLUE",
+                    text = catdog.name,
                     fontSize = dimensionResource(id = R.dimen.text_xs).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,
@@ -104,7 +105,7 @@ fun PopularCatDogCard() {
                     ) {
                         Icon(
                             imageVector = Icons.Filled.FavoriteBorder,
-                            contentDescription = stringResource(R.string.catdog_like)
+                            contentDescription = stringResource(R.string.popular_catdog_like)
                         )
                     }
                 }

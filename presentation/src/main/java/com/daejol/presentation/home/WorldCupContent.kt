@@ -18,7 +18,7 @@ fun WorldCupContent() {
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
     ) {
-        Title(text = R.string.home_app_bar_title)
+        Title(text = R.string.world_cup_title)
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         WorldCupCard(
             R.string.cat_world_cup_title,

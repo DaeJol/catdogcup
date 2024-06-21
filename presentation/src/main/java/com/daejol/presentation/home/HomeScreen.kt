@@ -79,7 +79,7 @@ fun HomeScreen() {
             WorldCupContent()
             // TODO: margin 수정
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_s)))
-            PopularCatDogCard()
+            PopularCatDogContent()
         }
     }
 }
