@@ -1,5 +1,6 @@
 package com.daejol.presentation.home
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.Orange80
+import com.daejol.presentation.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,10 +75,9 @@ fun HomeScreen() {
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(dimensionResource(id = R.dimen.space_m))
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .verticalScroll(rememberScrollState())
         ) {
-            CatOfTodayCard()
+            Title(text = R.string.home_app_bar_title)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
             WorldCupCard(
                 R.string.cat_world_cup_title,
@@ -102,4 +104,15 @@ fun HomeScreen() {
             PopularCatDog()
         }
     }
+}
+
+@Composable
+fun Title(
+    @StringRes text: Int
+) {
+    Text(
+        text = stringResource(id = text),
+        style = Typography.titleLarge,
+        modifier = Modifier
+    )
 }

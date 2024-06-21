@@ -2,13 +2,8 @@ package com.daejol.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.daejol.presentation.R
-
 
 val Pretendard = FontFamily(
     fonts = listOf(
@@ -49,9 +44,9 @@ val oaGothic = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     titleLarge = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = MoveSans,
         fontWeight = FontWeight.Bold,
-        fontSize = 24.sp
+        fontSize = 16.sp
     ),
     // "카테고리" 이렇게 적혀있는 타이틀에 사용하는 폰트
     headlineLarge = TextStyle(
