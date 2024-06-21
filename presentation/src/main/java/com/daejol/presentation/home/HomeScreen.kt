@@ -77,8 +77,7 @@ fun HomeScreen() {
                 .verticalScroll(rememberScrollState())
         ) {
             WorldCupContent()
-            // TODO: margin 수정
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_s)))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
             PopularCatDogContent()
         }
     }
