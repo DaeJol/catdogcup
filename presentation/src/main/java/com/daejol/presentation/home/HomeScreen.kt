@@ -30,10 +30,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
+import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.theme.Typography
 
-@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
@@ -74,31 +74,9 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(dimensionResource(id = R.dimen.space_m))
                 .verticalScroll(rememberScrollState())
         ) {
-            Title(text = R.string.home_app_bar_title)
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            WorldCupCard(
-                R.string.cat_world_cup_title,
-                R.string.cat_world_cup_desc,
-                R.string.cat_world_cup_button,
-                R.drawable.cat
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            WorldCupCard(
-                R.string.dog_world_cup_title,
-                R.string.dog_world_cup_desc,
-                R.string.dog_world_cup_button,
-                R.drawable.dog
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            WorldCupCard(
-                R.string.mixed_world_cup_title,
-                R.string.mixed_world_cup_desc,
-                R.string.mixed_world_cup_button,
-                R.drawable.catdog
-            )
+            WorldCupContent()
             // TODO: margin 수정
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_s)))
             PopularCatDog()
@@ -115,4 +93,12 @@ fun Title(
         style = Typography.titleLarge,
         modifier = Modifier
     )
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    CatdogcupTheme {
+        HomeScreen()
+    }
 }
