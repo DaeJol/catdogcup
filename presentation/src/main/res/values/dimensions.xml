@@ -5,15 +5,19 @@
     <dimen name="space_s">12dp</dimen>
     <dimen name="space_m">16dp</dimen>
     <dimen name="space_l">20dp</dimen>
+    <dimen name="text_xxxs">6sp</dimen>
     <dimen name="text_xxs">8sp</dimen>
-    <dimen name="text_xs">12sp</dimen>
-    <dimen name="text_s">14sp</dimen>
-    <dimen name="text_m">16sp</dimen>
-    <dimen name="text_l">20sp</dimen>
+    <dimen name="text_xs">10sp</dimen>
+    <dimen name="text_s">12sp</dimen>
+    <dimen name="text_m">14sp</dimen>
+    <dimen name="text_l">16sp</dimen>
+    <dimen name="text_xl">20sp</dimen>
     <dimen name="elevation_default">6dp</dimen>
-    <dimen name="rounded_corner_size">28dp</dimen>
+    <dimen name="rounded_corner_size_s">20dp</dimen>
+    <dimen name="rounded_corner_size_m">28dp</dimen>
 
     <!-- Home Screen -->
     <dimen name="home_app_bar_title_width">64</dimen>
     <dimen name="world_cup_card_image_size">80dp</dimen>
+    <dimen name="popular_catdog_image_height">116dp</dimen>
 </resources>

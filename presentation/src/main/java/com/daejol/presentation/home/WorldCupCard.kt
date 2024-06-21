@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
+import com.daejol.presentation.ui.theme.White100
 
 @Composable
 fun WorldCupCard(
@@ -43,7 +43,7 @@ fun WorldCupCard(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
         ),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = White100
         ),
         modifier = Modifier
             .fillMaxWidth()
@@ -62,7 +62,7 @@ fun WorldCupCard(
             ) {
                 Text(
                     text = stringResource(id = title),
-                    fontSize = dimensionResource(id = R.dimen.text_s).value.sp,
+                    fontSize = dimensionResource(id = R.dimen.text_m).value.sp,
                     style = Typography.titleSmall
                 )
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))

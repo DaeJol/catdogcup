@@ -23,5 +23,6 @@
     <string name="mixed_world_cup_desc">고양이? 강아지? 중요하지 않아요.\n가장 귀엽다고 생각하는 아이를 골라보세요.</string>
     <string name="mixed_world_cup_button">고양이 &amp; 강아지 월드컵 하러가기</string>
     <string name="popular_catdog">인기 고양이 &amp; 강아지</string>
-    <string name="popular_catdog_desc">집사들이 뽑은 가장 인기 있는 고양이 사진이에요.</string>
+    <string name="popular_catdog_image">인기 고양이 및 강아지 이미지</string>
+    <string name="popular_catdog_like">좋아요</string>
 </resources>
