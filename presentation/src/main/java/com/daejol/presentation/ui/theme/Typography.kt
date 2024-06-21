@@ -2,8 +2,11 @@ package com.daejol.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.daejol.presentation.R
 
 val Pretendard = FontFamily(
     fonts = listOf(
@@ -32,13 +35,6 @@ val Gimpo = FontFamily(
         Font(R.font.gimpo_1, weight = FontWeight.Light),
         Font(R.font.gimpo_2, weight = FontWeight.Normal)
     )
-)
-
-
-// TODO: 삭제
-val oaGothic = FontFamily(
-    Font(R.font.oa_gothic_medium, FontWeight.Medium, FontStyle.Normal),
-    Font(R.font.oa_gothic_extra_bold, FontWeight.ExtraBold, FontStyle.Normal)
 )
 
 // Set of Material typography styles to start with
