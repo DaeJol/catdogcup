@@ -27,7 +27,6 @@ import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.home.HomeScreen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.ui.theme.CatdogcupTheme
-import com.daejol.presentation.ui.theme.Orange80
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,9 +42,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            CatdogcupTheme(
-                statusBarColor = Orange80
-            ) {
+            CatdogcupTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
