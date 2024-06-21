@@ -5,6 +5,7 @@
 # 빌드나 기능 개발 시 문제가 될 여지가 있습니다.
 
 [versions]
+coilCompose = "2.6.0"
 hilt = "2.51.1"
 hiltCompiler = "1.2.0"
 
@@ -43,6 +44,7 @@ androidx-material3-adaptive-navigation-suite = { module = "androidx.compose.mate
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationCompose" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationCompose" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
