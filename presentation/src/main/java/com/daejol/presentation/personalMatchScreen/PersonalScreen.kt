@@ -1,6 +1,7 @@
 package com.daejol.presentation.personalMatchScreen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -20,15 +21,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
-import com.daejol.presentation.ui.theme.Black80
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
 import com.daejol.presentation.ui.theme.Gimpo
+import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.theme.Pretendard
-import com.daejol.presentation.ui.theme.RichText
+import com.daejol.presentation.ui.theme.RichTextAlign
 import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -66,40 +67,38 @@ fun PersonalWidget() {
                             fontColor = White100
                         ).style,
                         // 텍스트의 top 패딩 주기
-                        modifier = Modifier.padding(top = 80.dp)
-                        //                        lineHeight = TextUnit(-10F, TextUnitType.Sp)
+                        modifier = Modifier
+                            .padding(top = 80.dp)
                     )
-//                    CustomRichText(
-//                        listOf(
-//                            RichText(text = "질문에 답변하고", endOfLine = true),
-//                            RichText(text = "나와 성격이 비슷한", endOfLine = true),
-//                            RichText(
-//                                text = "강아지",
-//                                textStyle = CustomTextStyle(
-//                                    fontColor = White100,
-//                                    fontFamily = Gimpo,
-//                                    fontWeight = FontWeight.Normal
-//                                )
-//
-//                            ),
-//                            RichText(text = "와 "),
-//                            RichText(
-//                                text = "고양이",
-//                                textStyle = CustomTextStyle(
-//                                    fontColor = White100,
-//                                    fontFamily = Gimpo,
-//                                    fontWeight = FontWeight.Normal
-//                                )
-//                            ),
-//                            RichText(text = "를 찾아보세요."),
-//                            RichText(text = "\n\n준비 되셨나요?")
-//                        ),
-//                        textAlign = TextAlign.Center,
-//                        defaultFontFamily = Pretendard,
-//                        defaultTextSize = 18F,
-//                        defaultFontWeight = FontWeight.Bold,
-//                        defaultTextColor = Black80
-//                    )
+                    CustomRichText(
+                        defaultFontWeight = FontWeight.SemiBold,
+                        defaultFontFamily = MoveSans,
+                        textAlign = RichTextAlign.Center
+                    ) {
+                        RichText("질문에 답변하고", endOfLine = true)
+                        RichText("나와 성격이 비슷한", endOfLine = true)
+                        RichText(
+                            "강아지",
+                            textStyle = CustomTextStyle(
+                                fontColor = White100,
+                                fontFamily = Gimpo,
+                                fontWeight = FontWeight.Normal
+                            ),
+                        )
+                        RichText("와 ")
+                        RichText(
+                            "고양이",
+                            textStyle = CustomTextStyle(
+                                fontColor = White100,
+                                fontFamily = Gimpo,
+                                fontWeight = FontWeight.Normal
+                            ),
+                        )
+                        RichText("를 찾아보세요.", endOfLine = true)
+                        RichText("", endOfLine = true)
+                        RichText("준비 되셨나요?")
+                    }
+
                     // 스페이스 여백 공간 하나 만들고 (fillMax
                     GlideImage(
                         imageModel = R.drawable.personal_match_screen_1,
