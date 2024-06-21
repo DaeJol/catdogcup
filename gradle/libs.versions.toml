@@ -18,7 +18,7 @@ ktx = "1.13.1"
 appcompat = "1.6.1"
 
 # plugin
-androidGradlePlugin = "8.2.0"
+androidGradlePlugin = "8.5.0"
 kotlin = "1.9.23"
 material = "1.11.0"
 composeMaterial = "1.2.1"

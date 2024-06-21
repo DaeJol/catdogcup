@@ -40,6 +40,7 @@ val Gimpo = FontFamily(
 )
 
 
+// TODO: 삭제
 val oaGothic = FontFamily(
     Font(R.font.oa_gothic_medium, FontWeight.Medium, FontStyle.Normal),
     Font(R.font.oa_gothic_extra_bold, FontWeight.ExtraBold, FontStyle.Normal)
@@ -48,8 +49,8 @@ val oaGothic = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     titleLarge = TextStyle(
-        fontFamily = oaGothic,
-        fontWeight = FontWeight.ExtraBold,
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.Bold,
         fontSize = 24.sp
     ),
     // "카테고리" 이렇게 적혀있는 타이틀에 사용하는 폰트
@@ -59,8 +60,8 @@ val Typography = Typography(
         fontSize = 25.sp
     ),
     bodyLarge = TextStyle(
-        fontFamily = oaGothic,
-        fontWeight = FontWeight.Medium,
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp

@@ -11,9 +11,15 @@
     <string name="app_bar_title">개냥컵</string>
     <string name="cat_of_today">오늘의 고양이 today\'s cat</string>
     <string name="cat_of_today_more">더보기</string>
-    <string name="cat_world_cup">고양이\n월드컵</string>
-    <string name="dog_world_cup">강아지\n월드컵</string>
-    <string name="mixed_world_cup">혼합\n월드컵</string>
+    <string name="cat_world_cup_title">최애 주인님은 누구?</string>
+    <string name="cat_world_cup_desc">집사의 입장에서 고르는 나의 주인님.\n가장 귀여운 주인님은 누구일까요?</string>
+    <string name="cat_world_cup_button">고양이 월드컵 하러 가기</string>
+    <string name="dog_world_cup_title">나의 최고의 친구!</string>
+    <string name="dog_world_cup_desc">강아지는 나의 최고의 친구.\n어떤 아이가 나의 베스트 프렌드가 될 수 있을까요?</string>
+    <string name="dog_world_cup_button">강아지 월드컵 하러 가기</string>
+    <string name="mixed_world_cup_title">고양이와 강아지를 함께</string>
+    <string name="mixed_world_cup_desc">고양이? 강아지? 중요하지 않아요.\n가장 귀엽다고 생각하는 아이를 골라보세요.</string>
+    <string name="mixed_world_cup_button">고양이 &amp; 강아지 월드컵 하러가기</string>
     <string name="popular_catdog">인기 고양이 &amp; 강아지</string>
     <string name="popular_catdog_desc">집사들이 뽑은 가장 인기 있는 고양이 사진이에요.</string>
 </resources>
