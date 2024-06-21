@@ -2,8 +2,6 @@ package com.daejol.presentation.ui.theme
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.common.data.sp
@@ -61,8 +58,7 @@ fun CustomRichText(
     defaultTextColor: Color = Black100,
     defaultFontFamily: FontFamily = Pretendard,
     defaultFontWeight: FontWeight = FontWeight.Normal,
-    textAlign: TextAlign = TextAlign.Left,
-    content: @Composable (ColumnScope.() -> Unit)
+    textAlign: TextAlign = TextAlign.Left
 ) {
     return Text(
         buildAnnotatedString {

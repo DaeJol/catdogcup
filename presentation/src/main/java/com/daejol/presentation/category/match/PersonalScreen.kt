@@ -1,4 +1,4 @@
-package com.daejol.presentation.personalMatchScreen
+package com.daejol.presentation.category.match
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
