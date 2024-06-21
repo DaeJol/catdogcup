@@ -15,6 +15,5 @@
 
     <!-- Home Screen -->
     <dimen name="home_app_bar_title_width">64</dimen>
-    <dimen name="world_cup_card_height">104dp</dimen>
     <dimen name="world_cup_card_image_size">80dp</dimen>
 </resources>

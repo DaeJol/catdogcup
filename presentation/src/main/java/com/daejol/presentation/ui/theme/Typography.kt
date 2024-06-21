@@ -43,16 +43,21 @@ val oaGothic = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    titleLarge = TextStyle(
-        fontFamily = MoveSans,
-        fontWeight = FontWeight.Bold,
-        fontSize = 16.sp
-    ),
     // "카테고리" 이렇게 적혀있는 타이틀에 사용하는 폰트
     headlineLarge = TextStyle(
         fontFamily = Pretendard,
         fontWeight = FontWeight.Bold,
         fontSize = 25.sp
+    ),
+    titleLarge = TextStyle(
+        fontFamily = MoveSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Pretendard,
@@ -60,6 +65,11 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = Pretendard,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 8.sp
     )
     /* Other default text styles to override
     titleLarge = TextStyle(

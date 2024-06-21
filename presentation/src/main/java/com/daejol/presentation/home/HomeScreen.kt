@@ -33,9 +33,9 @@ import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.theme.Typography
 
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
 fun HomeScreen() {
     Scaffold(
         topBar = {

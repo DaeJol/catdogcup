@@ -134,7 +134,7 @@ fun CatDogCupNavHost(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    CatDogCupApp()
-//    CatdogcupTheme {
-//    }
+    CatdogcupTheme {
+        CatDogCupApp()
+    }
 }
