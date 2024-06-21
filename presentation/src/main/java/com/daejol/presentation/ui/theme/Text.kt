@@ -3,6 +3,7 @@ package com.daejol.presentation.ui.theme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,9 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.common.data.sp
+import kotlin.math.max
 
 /** CustomRichText에 담을 자식 클래스입니다.
  * @param text 단순히 텍스트를 담아주세요.
@@ -109,13 +112,23 @@ class Padding(
 
 /// 2024.06.21 이거 object로 만드니까 rebuild할 때 items가 초기화가 안되어서
 /// rebuild할 때마다 위젯이 복사되는 문제가 있음 (items에 아이템을 계속 넣으니까)
-class RichTextScope {
+class RichTextScope(
+    val defaultTextSize: Float = 14F,
+    val defaultTextColor: Color = Black100,
+    val defaultFontFamily: FontFamily = Pretendard,
+    val defaultFontWeight: FontWeight = FontWeight.Normal,
+) {
     private val items = mutableListOf<RichTextInstance>()
 
     @Composable
     fun RichText(
         text: String,
-        textStyle: CustomTextStyle = CustomTextStyle(),
+        textStyle: CustomTextStyle = CustomTextStyle(
+            fontSize = defaultTextSize,
+            fontColor = defaultTextColor,
+            fontFamily = defaultFontFamily,
+            fontWeight = defaultFontWeight,
+        ),
         endOfLine: Boolean = false,
         lineHeight: Dp = 0.dp,
         decoration: RichTextDecoration = RichTextDecoration()
@@ -188,13 +201,17 @@ fun CustomRichText(
     defaultTextColor: Color = Black100,
     defaultFontFamily: FontFamily = Pretendard,
     defaultFontWeight: FontWeight = FontWeight.Normal,
-    textAlign: TextAlign = TextAlign.Left,
+    textAlign: RichTextAlign = RichTextAlign.Start,
     content: @Composable RichTextScope.() -> Unit
 ) {
-    var scope = RichTextScope()
+    val scope = RichTextScope(
+        defaultTextSize = defaultTextSize,
+        defaultTextColor = defaultTextColor,
+        defaultFontFamily = defaultFontFamily,
+        defaultFontWeight = defaultFontWeight,
+    )
     scope.content()
     val richContent = scope.richTextContent()
-
 
     return Layout(
         modifier = Modifier.wrapContentSize(),
@@ -204,22 +221,85 @@ fun CustomRichText(
             measurable.measure(constraints)
         }
 
-        layout(constraints.maxWidth, constraints.maxHeight) {
-            var xPosition = 0
-            var yPosition = 0
+        var xPosition = 0
+        var yPosition = 0
+
+        val placeableMap = mutableMapOf<Int, Pair<Int, Int>>()
+        var lineStartIndex = 0
+
+        // 각각 라인의 너비를 구하고 layoutWidth를 구하기 위한 변수
+        var lineWidth = 0
+        // wrap content를 계산하기 위해 너비를 구하는 변수
+        var layoutWidth = 0
+        // 높이를 구하는 변수
+        var layoutHeight = 0
+
+        // 일단 컨텐츠 너비부터 구해줘야 뭘 할 수 있다.
+        placeables.forEachIndexed { index, placeable ->
+            lineWidth += placeable.width
+
+            if (scope.isEndOfLine(index)) {
+                layoutWidth = max(lineWidth, layoutWidth)
+                lineWidth = 0
+            }
+        }
+
+        placeables.forEachIndexed { index, placeable ->
+            layoutHeight += placeable.height
+
+            // x좌표가 0이면 라인이 새로 시작되는 것
+            if (xPosition == 0) {
+                lineStartIndex = index
+            }
+
+            placeableMap[index] = Pair(xPosition, yPosition)
+            // 라인이 끝나거나 마지막 라인일 경우
+            if (scope.isEndOfLine(index) || index == placeables.lastIndex) {
+
+                // 가운데 정렬
+                if (textAlign == RichTextAlign.Center) {
+                    val movePosition = layoutWidth / 2 - placeable.width / 2
+                    for (i: Int in index..lineStartIndex) {
+                        placeableMap[i]?.let {
+                            placeableMap[i] = Pair(it.first + movePosition, it.second)
+                        }
+                    }
+                }
+
+                // 오른쪽 정렬
+                else if (textAlign == RichTextAlign.End) {
+                    val movePosition = layoutWidth - placeable.width
+                    for (i: Int in index..lineStartIndex) {
+                        placeableMap[i]?.let {
+                            placeableMap[i] = Pair(it.first + movePosition, it.second)
+                        }
+                    }
+                }
+
+                // 좌측 정렬은 아무 작업 안하면 알아서 잘 된다.
+
+                xPosition = 0
+                yPosition += placeable.height
+            } else {
+                xPosition += placeable.width
+            }
+        }
+
+        layout(layoutWidth, layoutHeight) {
 
             placeables.forEachIndexed { index, placeable ->
-                placeable.placeRelative(x = xPosition, y = yPosition)
-
-                if (scope.isEndOfLine(index)) {
-                    xPosition = 0
-                    yPosition += placeable.height
-                } else {
-                    xPosition += placeable.width
+                val pair = placeableMap[index]
+                println("[keykat pair x: ${pair?.first}")
+                pair?.let {
+                    placeable.placeRelative(x = pair.first, y = pair.second)
                 }
             }
         }
     }
+}
+
+enum class RichTextAlign {
+    Start, End, Center
 }
 
 val Pretendard = FontFamily(
