@@ -80,6 +80,7 @@ dependencies {
     kapt (libs.dagger.hilt.compiler)
 
     implementation(libs.coil)
+    implementation(libs.coil.compose)
     implementation(libs.glide)
     implementation(libs.compose.glide)
 

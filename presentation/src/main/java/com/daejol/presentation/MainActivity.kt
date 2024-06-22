@@ -132,11 +132,6 @@ fun CatDogCupNavHost(
 @Composable
 fun DefaultPreview() {
     CatdogcupTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            CatDogCupApp()
-        }
+        CatDogCupApp()
     }
 }
