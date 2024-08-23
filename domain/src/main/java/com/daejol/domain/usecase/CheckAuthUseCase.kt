@@ -6,11 +6,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GetRankingUseCase @Inject constructor(
+class CheckAuthUseCase @Inject constructor(
     private val votesRepository: VotesRepository,
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
 ) {
     suspend operator fun invoke() = withContext(defaultDispatcher) {
-        votesRepository.getVotes()
+        votesRepository.checkIfUserIsSignedIn()
     }
 }

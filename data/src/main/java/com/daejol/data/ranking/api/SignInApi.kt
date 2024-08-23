@@ -10,19 +10,15 @@ import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-object RankingApi {
+object SignInApi {
     const val TAG = "RankingApi"
 
-    val database = Firebase.database
-    val myRef = database.getReference("message")
+    private val database = Firebase.database
+    private val myRef = database.getReference("message")
 
-    private lateinit var auth: FirebaseAuth
+    private var auth: FirebaseAuth = Firebase.auth
 
-    init {
-        auth = Firebase.auth
-    }
-
-    suspend fun getPopularCatsAndDogs() {
+    suspend fun getPopularAnimals() {
         // Read from the database
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

@@ -8,9 +8,9 @@ data class ImageEntity(
     @SerializedName("url")
     val url: String?,
     @SerializedName("width")
-    val width: Double?,
+    val width: Double? = null,
     @SerializedName("height")
-    val height: Double?,
+    val height: Double? = null,
     @SerializedName("breeds")
-    val breeds: List<BreedInfoEntity>?
+    val breeds: List<BreedInfoEntity>? = null
 )

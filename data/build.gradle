@@ -7,6 +7,9 @@ plugins {
 apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-kapt'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.daejol.data'
     compileSdk 34
@@ -21,6 +24,9 @@ android {
 
         testInstrumentationRunner "com.daejol.data.HiltTestRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "CAT_API_KEY", properties['cat_api_key']
+        buildConfigField "String", "DOG_API_KEY", properties['dog_api_key']
     }
 
     buildTypes {
@@ -28,6 +34,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17

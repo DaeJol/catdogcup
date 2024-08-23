@@ -2,14 +2,15 @@ package com.daejol.domain.di
 
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
-import com.daejol.domain.repository.RankingRepository
-import com.daejol.domain.usecase.CheckAuth
+import com.daejol.domain.repository.VotesRepository
+import com.daejol.domain.usecase.CheckAuthUseCase
 import com.daejol.domain.usecase.GetImageUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import com.daejol.domain.usecase.GetRankingUseCase
+import com.daejol.domain.usecase.WinWorldCupUseCase
 import javax.inject.Singleton
 
 @Module
@@ -28,12 +29,18 @@ object UseCaseModule {
     @Singleton
     @Provides
     fun provideGetRankingUseCase(
-        rankingRepository: RankingRepository
-    ): GetRankingUseCase = GetRankingUseCase(rankingRepository)
+        votesRepository: VotesRepository
+    ): GetRankingUseCase = GetRankingUseCase(votesRepository)
 
     @Singleton
     @Provides
     fun provideCheckAuthUseCase(
-        rankingRepository: RankingRepository
-    ): CheckAuth = CheckAuth(rankingRepository)
+        votesRepository: VotesRepository
+    ): CheckAuthUseCase = CheckAuthUseCase(votesRepository)
+
+    @Singleton
+    @Provides
+    fun provideWinWorldCupUseCase(
+        votesRepository: VotesRepository
+    ): WinWorldCupUseCase = WinWorldCupUseCase(votesRepository)
 }
