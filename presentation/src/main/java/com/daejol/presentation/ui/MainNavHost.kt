@@ -13,6 +13,7 @@ import com.daejol.presentation.ui.match.PersonalWidget
 import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
+import com.daejol.presentation.ui.story.StoryScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.ui.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.ui.worldcup.selection.WorldCupScreen
@@ -23,6 +24,7 @@ fun MainNavHost(
     modifier: Modifier
 ) {
     val worldCupViewModel = worldCupViewModel()
+    val storyViewModel = storyViewModel()
     val homeViewModel = homeViewModel()
 
     val homeUiState by homeViewModel.uiState.collectAsState()
@@ -72,12 +74,13 @@ fun MainNavHost(
         }
 
         composable(route = Screen.Story.route) {
-            // TODO: 스토리 화면
+            StoryScreen(viewModel = storyViewModel)
         }
 
         composable(route = Screen.MyPage.route) {
             MyPageScreen(navController = navController)
         }
+
         composable(route = Screen.Bookmark.route) {
             BookmarkScreen()
         }
