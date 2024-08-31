@@ -32,7 +32,7 @@ class StoryViewModel @Inject constructor(
     fun getStoryImages(
         context: Context,
     ) {
-        println("getStoryImage ---- ")
+        println("[keykat] getStoryImage")
         var list: List<ImageModel> = listOf()
         viewModelScope.launch {
             imageUseCase.getAnimalList(
@@ -50,8 +50,8 @@ class StoryViewModel @Inject constructor(
                 }
             }
 
-            println("[keykat] list ::: $list")
-            println("[keykat] list size: ${list.size}")
+//            println("[keykat] list ::: $list")
+//            println("[keykat] list size: ${list.size}")
             _storyImages.value = list
         }
     }

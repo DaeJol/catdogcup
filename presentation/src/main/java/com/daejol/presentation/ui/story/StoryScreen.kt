@@ -11,6 +11,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -26,13 +27,19 @@ import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 fun StoryScreen(
     viewModel: StoryViewModel,
 ) {
-    val imageWidth = LocalConfiguration.current.screenWidthDp.dp / 5 * 4 - 10.dp
-    val imageHeight = LocalConfiguration.current.screenWidthDp.dp / 5 * 4 - 20.dp
+    val imageWidth = LocalConfiguration.current.screenWidthDp.dp
+    val imageHeight = LocalConfiguration.current.screenWidthDp.dp
 
-    viewModel.getStoryImages(LocalContext.current)
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = "STORY_SCREEN") {
+        viewModel.getStoryImages(context)
+    }
+
     val images = viewModel.storyImages.value
 
-    println("[keykat] images: $images   count:: ${images.size}")
+    println("[keykat] images: $images")
+    println("[keykat] count::: ${images.size}")
 
     val pageState = rememberPagerState {
         images.size
@@ -45,7 +52,7 @@ fun StoryScreen(
             state = pageState
         ) {
             AsyncImage(
-                model = images[pageState.currentPage],
+                model = images[pageState.currentPage].imageEntity.url,
                 contentDescription = "",
                 modifier = Modifier
                     .width(imageWidth)
