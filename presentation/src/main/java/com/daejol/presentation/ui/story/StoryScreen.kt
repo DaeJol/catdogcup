@@ -28,14 +28,7 @@ fun StoryScreen(
     viewModel: StoryViewModel,
 ) {
     val imageWidth = LocalConfiguration.current.screenWidthDp.dp
-    val imageHeight = LocalConfiguration.current.screenWidthDp.dp
-
-    val context = LocalContext.current
-
-    LaunchedEffect(key1 = "STORY_SCREEN") {
-        viewModel.getStoryImages(context)
-    }
-
+    val imageHeight = LocalConfiguration.current.screenHeightDp.dp
     val images = viewModel.storyImages.value
 
     println("[keykat] images: $images")
@@ -50,22 +43,14 @@ fun StoryScreen(
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
             state = pageState
-        ) {
+        ) { page ->
             AsyncImage(
-                model = images[pageState.currentPage].imageEntity.url,
+                model = images[page].imageRequest,
                 contentDescription = "",
                 modifier = Modifier
                     .width(imageWidth)
                     .height(imageHeight)
-                    .padding(5.dp)
-                    .shadow(
-                        elevation = 1.5.dp,
-                        shape = RoundedCornerShape(
-                            topStart = 20.dp,
-                            topEnd = 20.dp
-                        )
-                    ),
-                contentScale = ContentScale.Crop
+                    .padding(5.dp),
             )
         }
     }

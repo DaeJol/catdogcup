@@ -5,6 +5,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.imageLoader
 import coil.request.CachePolicy
 import coil.request.ErrorResult
 import coil.request.ImageRequest
@@ -41,11 +42,16 @@ class StoryViewModel @Inject constructor(
 
             }.collect {
                 list = it.toImmutableList().map {
+                    val request = ImageRequest
+                        .Builder(context)
+                        .data(it.url)
+                        .build()
+
+                    context.imageLoader.enqueue(request = request)
+
                     ImageModel(
                         imageEntity = it,
-                        imageRequest = createImageRequest(
-                            context = context, imageUrl = it.url ?: "",
-                        )
+                        imageRequest = request
                     )
                 }
             }

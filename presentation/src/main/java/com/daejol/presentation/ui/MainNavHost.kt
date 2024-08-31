@@ -29,6 +29,7 @@ fun MainNavHost(
     val homeViewModel = homeViewModel()
 
     val homeUiState by homeViewModel.uiState.collectAsState()
+    storyViewModel.getStoryImages(LocalContext.current)
 
     NavHost(
         navController = navController,
