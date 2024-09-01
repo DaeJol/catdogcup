@@ -53,12 +53,11 @@ fun StoryScreen(
     }
 
     val ticks: MutableState<Long> = remember { mutableStateOf(0L) }
-    val timeRange = 100L
+    val timeRange = 10L
 
     LaunchedEffect(Unit) {
         while (true) {
-            println("[keykat] ${System.currentTimeMillis()}")
-            if (ticks.value >= 100 * 10 * 10) {
+            if (ticks.value >= 100 * 10 * 10.2) {
                 ticks.value = 0
 
                 with(pageState) {
@@ -74,7 +73,7 @@ fun StoryScreen(
                 }
             }
 
-            delay(timeRange)
+            delay(4)
             ticks.value += timeRange
         }
     }
@@ -128,7 +127,7 @@ fun TimerWidgetItem(
     min: Double,
     max: Double,
 ) {
-    val screenWidth = LocalConfiguration.current.screenWidthDp * 0.3
+    val screenWidth = LocalConfiguration.current.screenWidthDp * 0.31
     val rateWidth = if (ticks.value < min) {
         0.toDouble()
     } else if (ticks.value / max < 1) {
@@ -141,13 +140,12 @@ fun TimerWidgetItem(
 
     Box(
         modifier = Modifier
-            .padding(vertical = 5.dp)
+            .padding(vertical = 10.dp)
             .width(screenWidth.dp)
             .height(10.dp)
             .clip(RoundedCornerShape(10.dp)),
         contentAlignment = Alignment.TopStart
     ) {
-//        Text(text = "$ticks")
         Box(
             contentAlignment = Alignment.TopStart,
             modifier = Modifier
