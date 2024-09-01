@@ -10,9 +10,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.bookmark.BookmarkScreen
-import com.daejol.presentation.ui.match.PersonalWidget
+import com.daejol.presentation.ui.match.MatchStartScreen
 import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
+import com.daejol.presentation.ui.match.MatchLoadingScreen
+import com.daejol.presentation.ui.match.MatchQuestionScreen
+import com.daejol.presentation.ui.match.MatchResultScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
 import com.daejol.presentation.ui.story.StoryScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
@@ -72,8 +75,29 @@ fun MainNavHost(
         }
 
         composable(route = Screen.Matching.route) {
-            PersonalWidget()
+            MatchStartScreen(
+                navController = navController
+            )
         }
+
+        composable(route = Screen.MatchingQuestion.route) {
+            MatchQuestionScreen(
+                navController = navController
+            )
+        }
+
+        composable(route = Screen.MatchingLoading.route) {
+            MatchLoadingScreen(
+                navController = navController
+            )
+        }
+
+        composable(route = Screen.MatchingResult.route) {
+            MatchResultScreen(
+                navController = navController
+            )
+        }
+
 
         composable(route = Screen.Story.route) {
             StoryScreen(viewModel = storyViewModel)

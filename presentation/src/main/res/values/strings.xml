@@ -4,6 +4,9 @@
     <!-- Screen -->
     <string name="home">홈</string>
     <string name="matching">성격 매칭</string>
+    <string name="matching_question">성격 매칭 - 질문</string>
+    <string name="matching_loading">성격 매칭 - 로딩</string>
+    <string name="matching_result">성격 매칭 - 결과</string>
     <string name="story">스토리</string>
     <string name="my_page">마이페이지</string>
     <string name="worldcup_selection">월드컵선택</string>
@@ -40,4 +43,10 @@
     <string name="my_page_title_etc">기타</string>
     <string name="my_page_etc_sign_in">로그인</string>
     <string name="my_page_etc_sign_out">로그아웃</string>
+
+    <!-- Match Screen -->
+    <string name="match_title_1">모든 질문이 끝났어요!</string>
+    <string name="match_title_2">결과를 보러 갈까요?</string>
+    <string name="match_result_go_home">홈으로 가기</string>
+    <string name="match_result_one_more">한번 더 하기</string>
 </resources>
