@@ -114,6 +114,7 @@ class Padding(
 class RichTextScope(
     val defaultTextSize: Float = 14F,
     val defaultTextColor: Color = Black100,
+    val defaultTextAlign: RichTextAlign,
     val defaultFontFamily: FontFamily = Pretendard,
     val defaultFontWeight: FontWeight = FontWeight.Normal,
 ) {
@@ -128,6 +129,7 @@ class RichTextScope(
             fontFamily = defaultFontFamily,
             fontWeight = defaultFontWeight,
         ),
+        textAlign: RichTextAlign? = RichTextAlign.Start,
         endOfLine: Boolean = false,
         lineHeight: Dp = 0.dp,
         decoration: RichTextDecoration = RichTextDecoration()
@@ -139,6 +141,7 @@ class RichTextScope(
         val richText = RichTextInstance(
             text = text,
             textStyle = textStyle,
+            textAlign = textAlign,
             endOfLine = endOfLine,
             lineHeight = lineHeight,
             decoration = decoration
@@ -154,17 +157,20 @@ class RichTextScope(
     private class RichTextInstance(
         val text: String = "",
         val textStyle: CustomTextStyle = CustomTextStyle(),
+        val textAlign: RichTextAlign? = RichTextAlign.Start,
         val endOfLine: Boolean = false,
         val lineHeight: Dp = 0.dp,
         val decoration: RichTextDecoration = RichTextDecoration()
     )
 
 
-    fun richTextContent(): @Composable () -> Unit {
+    fun richTextContent(
+        textAlign: RichTextAlign
+    ): @Composable () -> Unit {
         return {
             items.forEach { state ->
                 val it = state.value
-                val text = it.text + if (it.endOfLine) "\n" else ""
+                val text = it.text
 
                 Box(
                     modifier = Modifier
@@ -186,11 +192,19 @@ class RichTextScope(
                             it.decoration.padding.bottom.dp,
                         )
                 ) {
+                    val align = if (textAlign == RichTextAlign.End) {
+                        TextAlign.End
+                    } else if (textAlign == RichTextAlign.Center) {
+                        TextAlign.Center
+                    } else {
+                        TextAlign.Start
+                    }
+
                     Text(
                         modifier = Modifier.wrapContentSize(),
                         text = text,
                         style = it.textStyle.style,
-                        lineHeight = it.lineHeight.sp(),
+                        textAlign = align,
                     )
                 }
             }
@@ -216,11 +230,14 @@ fun CustomRichText(
     val scope = RichTextScope(
         defaultTextSize = defaultTextSize,
         defaultTextColor = defaultTextColor,
+        defaultTextAlign = textAlign,
         defaultFontFamily = defaultFontFamily,
         defaultFontWeight = defaultFontWeight,
     )
     scope.content()
-    val richContent = scope.richTextContent()
+    val richContent = scope.richTextContent(
+        textAlign = textAlign
+    )
 
     return Layout(
         modifier = Modifier

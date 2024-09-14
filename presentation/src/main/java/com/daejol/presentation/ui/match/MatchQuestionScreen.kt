@@ -94,7 +94,7 @@ fun MatchQuestionScreen(
 
                             // TODO: RichText 줄바꿈 되도록 수정할 것
                             RichText(
-                                "집 밖에서 노는 것과 집 안에서 노는 것.",
+                                "집 밖에서 노는 것과 집 안에서 노는 것. 노는 것 노는 것\n노는 것",
                                 textStyle = CustomTextStyle(
                                     fontFamily = Gimpo,
                                     fontWeight = FontWeight.Normal,
