@@ -47,12 +47,15 @@ import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun MatchResultScreen(
+    viewModel: MatchViewModel,
     navController: NavController
 ) {
     val configuration = LocalConfiguration.current
 
     val sh = configuration.screenHeightDp.dp
     val sw = configuration.screenWidthDp.dp
+
+    val result = viewModel
 
     return CatdogcupTheme(
         statusBarColor = Orange80

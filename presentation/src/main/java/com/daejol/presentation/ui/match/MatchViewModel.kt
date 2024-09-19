@@ -1,8 +1,11 @@
 package com.daejol.presentation.ui.match
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.daejol.domain.entity.BreedInfoEntity
 import com.daejol.domain.usecase.AnswerData
 import com.daejol.domain.usecase.GetImageUseCase
 import com.daejol.domain.usecase.GetMatchQuestionUseCase
@@ -11,6 +14,8 @@ import com.daejol.domain.usecase.MatchData
 import com.daejol.domain.usecase.MatchQuestionType
 import com.daejol.presentation.model.ImageModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +35,9 @@ class MatchViewModel @Inject constructor(
     )
     val currentResult: MutableMap<MatchQuestionType, Int> = _currentResult
 
+    private val _matchResult = mutableStateOf<BreedInfoEntity?>(null)
+    val matchResult: MutableState<BreedInfoEntity?> = _matchResult
+
     fun init() {
         currentResult.keys.forEach { key ->
             currentResult[key] = 0
@@ -44,7 +52,7 @@ class MatchViewModel @Inject constructor(
         currentResult[answer.answerType]?.plus(1)
     }
 
-    fun calculateResult(): String {
+    private fun calculateResult(): String {
         var result = ""
         matchQuestionUseCase.matchPairList.forEach { p ->
             result += if (currentResult[p.first]!! > currentResult[p.second]!!) {
@@ -55,5 +63,16 @@ class MatchViewModel @Inject constructor(
         }
 
         return result
+    }
+
+    fun getMatchResult() {
+        viewModelScope.launch {
+            matchResultUseCase.getBreedsDetail(
+                calculateResult()
+            ).collect {
+                matchResult.value = it
+                println("[keykat] result::::: ${matchResult.value}")
+            }
+        }
     }
 }

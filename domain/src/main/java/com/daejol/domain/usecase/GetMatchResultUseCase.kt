@@ -6,39 +6,118 @@ import kotlinx.coroutines.flow.*
 import java.lang.Exception
 import javax.inject.Inject
 
+data class MbtiCat(
+    val id: String,
+    val imageUrl: String,
+    val mbti: String
+)
+
 class GetMatchResultUseCase @Inject constructor(
     private val catBreedsRepository: CatBreedsRepository
 ) {
-    val matchResultImages = mutableMapOf(
-        "bslo" to "https://cdn2.thecatapi.com/images/7isAO4Cav.jpg",
-        "norw" to "https://cdn2.thecatapi.com/images/06dgGmEOV.jpg",
-        "abys" to "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg",
-        "kuri" to "https://cdn2.thecatapi.com/images/NZpO4pU56M.jpg",
-        "birm" to "https://cdn2.thecatapi.com/images/HOrX5gwLS.jpg",
-        "dons" to "https://cdn2.thecatapi.com/images/3KG57GfMW.jpg",
-        "hima" to "https://cdn2.thecatapi.com/images/CDhOtM-Ig.jpg",
-        "drex" to "https://cdn2.thecatapi.com/images/4RzEwvyzz.png",
-        "mcoo" to "https://cdn2.thecatapi.com/images/OOD3VXAQn.jpg",
-        "bali" to "https://cdn2.thecatapi.com/images/13MkvUreZ.jpg",
-        "cymr" to "https://cdn2.thecatapi.com/images/3dbtapCWM.jpg",
-        "munc" to "https://cdn2.thecatapi.com/images/j5cVSqLer.jpg",
-        "pers" to "https://cdn2.thecatapi.com/images/-Zfz5z2jK.jpg",
-        "khao" to "https://cdn2.thecatapi.com/images/165ok6ESN.jpg",
-        "nebe" to "https://cdn2.thecatapi.com/images/OGTWqNNOt.jpg"
+    val mbtiList = listOf(
+        MbtiCat(
+            id = "bslo",
+            imageUrl = "https://cdn2.thecatapi.com/images/7isAO4Cav.jpg",
+            mbti = "ECAR"
+        ),
+        MbtiCat(
+            id = "norw",
+            imageUrl = "https://cdn2.thecatapi.com/images/06dgGmEOV.jpg",
+            mbti = "ECAL"
+        ),
+        MbtiCat(
+            id = "abys",
+            imageUrl = "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg",
+            mbti = "ECDR"
+        ),
+        MbtiCat(
+            id = "kuri",
+            imageUrl = "https://cdn2.thecatapi.com/images/NZpO4pU56M.jpg",
+            mbti = "ECDL"
+        ),
+        MbtiCat(
+            id = "birm",
+            imageUrl = "https://cdn2.thecatapi.com/images/HOrX5gwLS.jpg",
+            mbti = "ESAR"
+        ),
+        MbtiCat(
+            id = "dons",
+            imageUrl = "https://cdn2.thecatapi.com/images/3KG57GfMW.jpg",
+            mbti = "ESAL"
+        ),
+        MbtiCat(
+            id = "hima",
+            imageUrl = "https://cdn2.thecatapi.com/images/CDhOtM-Ig.jpg",
+            mbti = "ESDR"
+        ),
+        MbtiCat(
+            id = "drex",
+            imageUrl = "https://cdn2.thecatapi.com/images/4RzEwvyzz.png",
+            mbti = "ESDL"
+        ),
+        MbtiCat(
+            id = "mcoo",
+            imageUrl = "https://cdn2.thecatapi.com/images/OOD3VXAQn.jpg",
+            mbti = "ICAR"
+        ),
+        MbtiCat(
+            id = "bali",
+            imageUrl = "https://cdn2.thecatapi.com/images/13MkvUreZ.jpg",
+            mbti = "ICAL"
+        ),
+        MbtiCat(
+            id = "cymr",
+            imageUrl = "https://cdn2.thecatapi.com/images/3dbtapCWM.jpg",
+            mbti = "ICDR"
+        ),
+        MbtiCat(
+            id = "munc",
+            imageUrl = "https://cdn2.thecatapi.com/images/j5cVSqLer.jpg",
+            mbti = "ICDL"
+        ),
+        MbtiCat(
+            id = "pers",
+            imageUrl = "https://cdn2.thecatapi.com/images/-Zfz5z2jK.jpg",
+            mbti = "ISAR"
+        ),
+        MbtiCat(
+            id = "khao",
+            imageUrl = "https://cdn2.thecatapi.com/images/165ok6ESN.jpg",
+            mbti = "ISAL"
+        ),
+        MbtiCat(
+            id = "nebe",
+            imageUrl = "https://cdn2.thecatapi.com/images/OGTWqNNOt.jpg",
+            mbti = "ISDR"
+        ),
+        MbtiCat(
+            id = "nebe",
+            imageUrl = "https://cdn2.thecatapi.com/images/OGTWqNNOt.jpg",
+            mbti = "ISDL"
+        ),
     )
     
     suspend fun getBreedsDetail(
-        id: String
+        mbti: String
     ): Flow<BreedInfoEntity?> {
-        return catBreedsRepository.getCatBreed(id = id).map {
+        val mbtiCat =  mbtiList.find {
+            it.mbti == mbti
+        }
+
+        if (mbtiCat == null) {
+            return flow { }
+        }
+
+        println("[keykat] ${mbti} ${mbtiCat}")
+
+        return catBreedsRepository.getCatBreed(id = mbtiCat.id).map {
             return@map it.on(
                 onError = {
                     throw Exception()
                 },
                 onSuccess = { breedTypeEntity ->
-                    breedTypeEntity?.copy(
-                        imageUrl = matchResultImages[id]
-                    )
+                    breedTypeEntity?.copy(imageUrl = mbtiCat.imageUrl)
                 }
             )
         }
