@@ -30,6 +30,7 @@ fun MainNavHost(
     val worldCupViewModel = worldCupViewModel()
     val storyViewModel = storyViewModel()
     val homeViewModel = homeViewModel()
+    val matchViewModel = matchViewModel()
 
     val homeUiState by homeViewModel.uiState.collectAsState()
     storyViewModel.getStoryImages(LocalContext.current)
@@ -82,6 +83,7 @@ fun MainNavHost(
 
         composable(route = Screen.MatchingQuestion.route) {
             MatchQuestionScreen(
+                viewModel = matchViewModel,
                 navController = navController
             )
         }

@@ -10,5 +10,5 @@ public interface CatBreedsApi {
     suspend fun getCatBreeds(): retrofit2.Response<List<CatBreedsDto>?>
 
     @GET("breeds/{id}")
-    suspend fun getCatBreed(id: String): retrofit2.Response<CatBreedDto?>
+    suspend fun getCatBreed(id: String): retrofit2.Response<CatBreedsDto?>
 }

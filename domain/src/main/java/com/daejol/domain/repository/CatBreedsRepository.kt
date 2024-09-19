@@ -10,5 +10,5 @@ interface CatBreedsRepository {
     suspend fun getCatBreeds(): Flow<DataState<List<BreedInfoEntity>>>
 
     @GET("breeds/{id}")
-    suspend fun getCatBreed(id: String): Flow<DataState<BreedTypeEntity>>
+    suspend fun getCatBreed(id: String): Flow<DataState<BreedInfoEntity>>
 }

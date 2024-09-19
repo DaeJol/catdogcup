@@ -2,6 +2,7 @@ package com.daejol.data.catdata.repository
 
 import com.daejol.domain.DataState
 import com.daejol.data.catdata.api.CatBreedsApi
+import com.daejol.data.catdata.dto.CatBreedsDto
 import com.daejol.data.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatBreedsRepository
 import com.daejol.domain.entity.BreedInfoEntity
@@ -23,11 +24,11 @@ class CatBreedsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCatBreed(id: String): Flow<DataState<BreedTypeEntity>> = flow {
+    override suspend fun getCatBreed(id: String): Flow<DataState<BreedInfoEntity>> = flow {
         try {
-            val catBreedType =
+            val catBreedInfo =
                 catBreedsApi.getCatBreed(id = id).body()
-            emit(DataState.Success(data = catBreedType?.toDomain()))
+            emit(DataState.Success(data = catBreedInfo?.toDomain()))
         } catch (e: Exception) {
             emit(DataState.Fail(data = null, exception = e))
         }

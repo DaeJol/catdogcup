@@ -24,11 +24,11 @@ class DogBreedsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getDogBreed(id: String): Flow<DataState<BreedTypeEntity>> = flow {
+    override suspend fun getDogBreed(id: String): Flow<DataState<BreedInfoEntity>> = flow {
         try {
-            val dogBreedType =
+            val dogBreedInfo =
                 dogBreedsApi.getDogBreed(id = id).body()
-            emit(DataState.Success(data = dogBreedType?.toDomain()))
+            emit(DataState.Success(data = dogBreedInfo?.toDomain()))
         } catch (e: Exception) {
             emit(DataState.Fail(data = null, exception = e))
         }

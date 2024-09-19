@@ -24,7 +24,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.data.MatchResult
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
@@ -40,6 +39,7 @@ import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun MatchQuestionScreen(
+    viewModel: MatchViewModel,
     navController: NavController? = null
 ) {
     val configuration = LocalConfiguration.current
@@ -47,13 +47,13 @@ fun MatchQuestionScreen(
     val sh = configuration.screenHeightDp.dp
     val sw = configuration.screenWidthDp.dp
 
-    MatchResult.init()
+    viewModel.init()
     val index = remember {
         mutableIntStateOf(0)
     }
 
     val questions = remember {
-        mutableStateOf(MatchResult.getQuestions())
+        mutableStateOf(viewModel.getQuestions())
     }
 
     var currentQuestion = remember {
@@ -151,7 +151,7 @@ fun MatchQuestionScreen(
                 Spacer(modifier = Modifier.height(50.dp))
                 Button(
                     onClick = {
-                        MatchResult.add(currentQuestion.value.answerList.first())
+                        viewModel.add(currentQuestion.value.answerList.first())
 
                         index.intValue += 1
                         currentQuestion.value = questions.value[index.intValue]
@@ -179,7 +179,7 @@ fun MatchQuestionScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = {
-                        MatchResult.add(currentQuestion.value.answerList.last())
+                        viewModel.add(currentQuestion.value.answerList.last())
                         index.intValue += 1
                         currentQuestion.value = questions.value[index.intValue]
 
