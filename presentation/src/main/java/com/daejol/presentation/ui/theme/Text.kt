@@ -132,7 +132,8 @@ class RichTextScope(
         textAlign: RichTextAlign? = RichTextAlign.Start,
         endOfLine: Boolean = false,
         lineHeight: Dp = 0.dp,
-        decoration: RichTextDecoration = RichTextDecoration()
+        decoration: RichTextDecoration = RichTextDecoration(),
+        modifier: Modifier = Modifier
     ) {
         val rt = remember {
             mutableStateOf(RichTextInstance())
@@ -144,7 +145,8 @@ class RichTextScope(
             textAlign = textAlign,
             endOfLine = endOfLine,
             lineHeight = lineHeight,
-            decoration = decoration
+            decoration = decoration,
+            modifier = modifier
         )
 
         if (rt !in items) {
@@ -160,20 +162,21 @@ class RichTextScope(
         val textAlign: RichTextAlign? = RichTextAlign.Start,
         val endOfLine: Boolean = false,
         val lineHeight: Dp = 0.dp,
-        val decoration: RichTextDecoration = RichTextDecoration()
+        val decoration: RichTextDecoration = RichTextDecoration(),
+        val modifier: Modifier = Modifier
     )
 
-
     fun richTextContent(
-        textAlign: RichTextAlign
+        textAlign: RichTextAlign,
     ): @Composable () -> Unit {
         return {
             items.forEach { state ->
                 val it = state.value
                 val text = it.text
+                val modifier = it.modifier
 
                 Box(
-                    modifier = Modifier
+                    modifier = modifier
                         .wrapContentSize()
                         // clip 다음에 background를 선언해줘야 색상이 선언된 후 clip이 적용됨
                         .clip(
@@ -201,7 +204,7 @@ class RichTextScope(
                     }
 
                     Text(
-                        modifier = Modifier.wrapContentSize(),
+                        modifier = modifier.wrapContentSize(),
                         text = text,
                         style = it.textStyle.style,
                         textAlign = align,
