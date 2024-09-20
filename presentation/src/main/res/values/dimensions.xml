@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="space_xxs">4dp</dimen>
+    <dimen name="space_xxxs">4dp</dimen>
+    <dimen name="space_xxs">6dp</dimen>
     <dimen name="space_xs">8dp</dimen>
     <dimen name="space_s">12dp</dimen>
     <dimen name="space_m">16dp</dimen>
@@ -20,9 +21,14 @@
 
     <!-- Home Screen -->
     <dimen name="home_app_bar_title_width">64dp</dimen>
+    <dimen name="world_cup_card_text_corner_radius">50dp</dimen>
     <dimen name="world_cup_card_image_size">80dp</dimen>
     <dimen name="popular_animal_ranking_size">24dp</dimen>
     <dimen name="popular_animal_image_height">116dp</dimen>
+    <dimen name="popular_animal_card_icon_size">32dp</dimen>
+
+    <!-- Detail Screen -->
+    <dimen name="detail_icon_button_size">36dp</dimen>
 
     <!-- My Page Screen -->
     <dimen name="my_animal_image_size">112dp</dimen>

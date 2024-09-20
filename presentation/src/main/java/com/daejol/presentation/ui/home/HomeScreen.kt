@@ -1,19 +1,15 @@
 package com.daejol.presentation.ui.home
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
-import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Search
@@ -33,8 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Animal
 import com.daejol.presentation.data.SampleData
+import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
@@ -44,36 +40,22 @@ fun HomeScreen(
     navController: NavController? = null,
     onDetailButtonClicked: (Animal) -> Unit
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar()
-        }
-    ) { innerPadding ->
-        LazyVerticalStaggeredGrid(
-            columns = StaggeredGridCells.Fixed(2),
-            verticalItemSpacing = dimensionResource(id = R.dimen.space_s),
-            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_s)),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = dimensionResource(id = R.dimen.space_m))
-        ) {
-            item(span = StaggeredGridItemSpan.FullLine) {
-                Column {
-                    WorldCupContent(navController)
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-                    Title(text = stringResource(id = R.string.popular_animal_title))
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                }
+    CatdogcupTheme {
+        Scaffold(
+            topBar = {
+                HomeTopBar()
             }
-            itemsIndexed(SampleData.animals) { i, animal ->
-                PopularAnimalCard(
-                    ranking = i + 1,
-                    animal = animal,
-                    onClick = { onDetailButtonClicked(animal) }
-                )
-            }
-            item(span = StaggeredGridItemSpan.FullLine) {
+        ) { innerPadding ->
+            val scrollState = rememberScrollState()
+
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .verticalScroll(scrollState)
+            ) {
+                WorldCupContent(navController)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+                PopularAnimalContent(SampleData.animals, onDetailButtonClicked)
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
             }
         }
@@ -86,7 +68,7 @@ private fun HomeTopBar() {
     TopAppBar(
         title = {
             Row(
-                verticalAlignment = Alignment.CenterVertically,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.catdogcup_logo),
@@ -124,7 +106,7 @@ fun Title(
 ) {
     Text(
         text = text,
-        style = Typography.titleLarge,
+        style = Typography.headlineLarge,
         modifier = modifier
     )
 }

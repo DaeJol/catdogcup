@@ -1,40 +1,27 @@
 package com.daejol.presentation.model
 
-import androidx.annotation.StringRes
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Extension
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.PhotoLibrary
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.daejol.presentation.R
-
 sealed class Screen(
-    val route: String,
-    @StringRes val resourceId: Int,
-    val icon : ImageVector? = null
+    val route: String
 ) {
-    data object Home : Screen("home", R.string.home, Icons.Filled.Home)
+    data object Home : Screen("home")
 
-    data object Matching : Screen("matching", R.string.matching, Icons.Filled.Extension)
+    data object WorldCupSelection : Screen("world_cup/selection")
 
-    data object MatchingQuestion : Screen("matching_question", R.string.matching_question, Icons.Filled.Extension)
+    data object WorldCupPlay : Screen("world_cup/play")
 
-    data object MatchingLoading : Screen("matching_loading", R.string.matching, Icons.Filled.Extension)
+    data object WorldCupResult : Screen("world_cup/result")
 
-    data object MatchingResult : Screen("matching_result", R.string.matching, Icons.Filled.Extension)
+    data object AnimalDetail : Screen("animal_detail")
 
-    data object Story : Screen("story", R.string.story, Icons.Filled.PhotoLibrary)
+    data object Matching : Screen("matching")
 
-    data object MyPage : Screen("my_page", R.string.my_page, Icons.Filled.Person)
+    data object MatchingQuestion : Screen("matching_question")
 
-    data object WorldCupSelection : Screen("worldcup/selection", R.string.worldcup_selection)
+    data object MatchingLoading : Screen("matching_loading")
 
-    data object WorldCupPlay : Screen("worldcup/play", R.string.worldcup_play)
+    data object MatchingResult : Screen("matching_result")
 
-    data object WorldCupResult : Screen("worldcup/result", R.string.worldcup_result)
+    data object MyPage : Screen("my_page")
 
-    data object AnimalDetail : Screen("animal_detail", R.string.animal_detail)
-
-    data object Bookmark : Screen("bookmark", R.string.bookmark)
+    data object Bookmark : Screen("bookmark")
 }

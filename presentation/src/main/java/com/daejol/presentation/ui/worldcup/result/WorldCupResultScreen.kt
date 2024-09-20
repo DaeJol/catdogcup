@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.Gimpo
 import com.daejol.presentation.ui.theme.MoveSans
@@ -218,7 +218,7 @@ fun PlayAnotherWorldCupButton(imageWidth: Dp, navController: NavController?) {
     // 다른 월드컵 하러 가기
     Button(
         onClick = {
-            navController?.navigate(Screen.Home.route) {
+            navController?.navigate(Graph.Home.route) {
                 popUpTo(0)
             }
         },

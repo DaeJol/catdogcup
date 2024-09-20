@@ -32,6 +32,7 @@ import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
+import com.daejol.presentation.ui.home.Title
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -46,10 +47,7 @@ fun AchievementContent(
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
-        Text(
-            text = stringResource(id = R.string.my_page_title_achievement),
-            style = Typography.titleLarge
-        )
+        Title(text = stringResource(id = R.string.my_page_title_achievement))
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         FlowRow(
             maxItemsInEachRow = 3,

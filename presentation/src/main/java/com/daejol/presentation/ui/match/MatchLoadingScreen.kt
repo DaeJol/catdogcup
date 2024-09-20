@@ -30,7 +30,6 @@ import com.daejol.presentation.ui.theme.Gimpo
 import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Orange80
-import com.daejol.presentation.ui.theme.Pretendard
 import com.daejol.presentation.ui.theme.RichTextAlign
 import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage

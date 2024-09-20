@@ -14,6 +14,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.daejol.presentation.R
+import com.daejol.presentation.ui.home.Title
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -26,10 +27,7 @@ fun EtcContent(
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
-        Text(
-            text = stringResource(id = R.string.my_page_title_etc),
-            style = Typography.titleLarge
-        )
+        Title(text = stringResource(id = R.string.my_page_title_etc))
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         Text(
             text = stringResource(id = R.string.my_page_etc_sign_in),

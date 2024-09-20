@@ -9,19 +9,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.R
+import com.daejol.presentation.model.Graph
+import com.daejol.presentation.navigation.MainNavHost
 
 @Composable
 fun MainApp() {
     val items = listOf(
-        Screen.Home,
-        Screen.Matching,
-        Screen.Story,
-        Screen.MyPage,
+        Graph.Home,
+        Graph.Matching,
+        Graph.Story,
+        Graph.MyPage,
     )
     val appState = rememberAppState()
     val navController = appState.navController
@@ -57,7 +60,16 @@ fun MainApp() {
                     }
                 }
             }
-        }
+        },
+        modifier = Modifier
+            .padding(
+                top = dimensionResource(id = R.dimen.space_xxl),
+                bottom = dimensionResource(id = R.dimen.space_xl)
+            )
+//            .systemBarsPadding()
+//            .statusBarsPadding()
+//            .navigationBarsPadding()
+
     ) { innerPadding ->
         MainNavHost(navController, Modifier.padding(innerPadding))
     }

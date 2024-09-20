@@ -13,10 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.daejol.presentation.R
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
+import com.daejol.presentation.ui.home.Title
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -30,10 +32,7 @@ fun MyAnimalContent(
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
-        Text(
-            text = "나의 대표 고양이",
-            style = Typography.titleLarge
-        )
+        Title(text = stringResource(id = R.string.my_page_main_achievement))
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             AchievementItem(

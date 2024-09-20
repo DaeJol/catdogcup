@@ -26,22 +26,24 @@ fun MyPageScreen(
 ) {
     val animals = SampleData.animals
 
-    Column(
-        modifier = modifier
-            .verticalScroll(rememberScrollState())
-            .padding(vertical = dimensionResource(id = R.dimen.space_xl))
-    ) {
-        MyAnimalContent(animal = animals[0])
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        BookmarkContent(
-            navController = navController,
-            animals = animals.subList(0, 10)
-        )
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        AchievementContent(animals = animals)
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        EtcContent()
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
+    CatdogcupTheme {
+        Column(
+            modifier = modifier
+                .verticalScroll(rememberScrollState())
+                .padding(vertical = dimensionResource(id = R.dimen.space_xl))
+        ) {
+            MyAnimalContent(animal = animals[0])
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
+            BookmarkContent(
+                navController = navController,
+                animals = animals.subList(0, 10)
+            )
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
+            AchievementContent(animals = animals)
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
+            EtcContent()
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
+        }
     }
 }
 

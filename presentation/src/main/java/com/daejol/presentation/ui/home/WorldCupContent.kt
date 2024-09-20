@@ -15,8 +15,8 @@ import androidx.navigation.NavController
 import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.R
 import com.daejol.presentation.model.Screen
-import com.daejol.presentation.ui.worldCupViewModel
 import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.ui.worldCupViewModel
 
 @Composable
 fun WorldCupContent(

@@ -15,7 +15,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,8 +32,8 @@ import com.daejol.presentation.R
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
 import com.daejol.presentation.model.Screen
+import com.daejol.presentation.ui.home.Title
 import com.daejol.presentation.ui.theme.CatdogcupTheme
-import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun BookmarkContent(
@@ -50,9 +49,8 @@ fun BookmarkContent(
         Row(
             modifier = modifier.padding(start = dimensionResource(id = R.dimen.space_l))
         ) {
-            Text(
+            Title(
                 text = stringResource(id = R.string.my_page_title_bookmark),
-                style = Typography.titleLarge,
                 modifier = modifier
                     .weight(1f)
                     .align(Alignment.CenterVertically)

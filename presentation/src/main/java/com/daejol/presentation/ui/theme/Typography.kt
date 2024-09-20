@@ -53,7 +53,7 @@ val Typography = Typography(
     titleSmall = TextStyle(
         fontFamily = Pretendard,
         fontWeight = FontWeight.Bold,
-        fontSize = 14.sp
+        fontSize = 12.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Pretendard,
@@ -65,7 +65,7 @@ val Typography = Typography(
     bodySmall = TextStyle(
         fontFamily = Pretendard,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 8.sp
+        fontSize = 12.sp
     )
     /* Other default text styles to override
     titleLarge = TextStyle(

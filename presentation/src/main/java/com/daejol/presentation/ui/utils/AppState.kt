@@ -14,7 +14,7 @@ import com.daejol.presentation.model.Screen
 class AppState(
     val navController: NavHostController
 ) {
-    private val disableBottomBarScreenList = listOf(
+    private val disableBottomBarGraphList = listOf(
         Screen.WorldCupSelection.route,
         Screen.WorldCupPlay.route,
         Screen.WorldCupResult.route,
@@ -25,7 +25,7 @@ class AppState(
 
     val shouldShowBottomBar: Boolean
         @Composable get() = navController
-            .currentBackStackEntryAsState().value?.destination?.route !in disableBottomBarScreenList
+            .currentBackStackEntryAsState().value?.destination?.route !in disableBottomBarGraphList
 
     val currentRoute: String?
         get() = navController.currentDestination?.route

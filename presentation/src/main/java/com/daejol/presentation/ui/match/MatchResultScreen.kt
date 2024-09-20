@@ -1,6 +1,5 @@
 package com.daejol.presentation.ui.match
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -27,13 +26,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -175,7 +173,7 @@ fun MatchResultScreen(
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.Home.route)
+                        navController.navigate(Graph.Home.route)
                     },
                     modifier = Modifier
                         .width(sw / 5 * 2)
@@ -195,7 +193,7 @@ fun MatchResultScreen(
                 }
                 Button(
                     onClick = {
-                        navController.navigate(Screen.Matching.route)
+                        navController.navigate(Graph.Matching.route)
                     },
                     modifier = Modifier
                         .width(sw / 5 * 2),

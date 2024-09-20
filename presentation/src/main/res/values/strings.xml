@@ -35,6 +35,7 @@
     <string name="popular_animal_back">뒤로 가기</string>
 
     <!-- My Page Screen -->
+    <string name="my_page_main_achievement">나의 대표 고양이</string>
     <string name="my_page_title_bookmark">북마크</string>
     <string name="my_page_bookmark_more">북마크 더보기</string>
     <string name="my_page_bookmarked_image">북마크한 이미지</string>

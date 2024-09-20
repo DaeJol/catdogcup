@@ -17,17 +17,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
+import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun PopularCatDogContent(
-    catdogs: List<CatDog> = listOf(
-        CatDog("Russian Blue", 1),
-        CatDog("Keykat", 2),
-        CatDog("Snow Cat", 3),
-        CatDog("Grasskitty", 4)
-    )
+fun PopularAnimalContent(
+    animals: List<Animal>,
+    onClick: (Animal) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
@@ -42,8 +40,13 @@ fun PopularCatDogContent(
             val configuration = LocalConfiguration.current
             val screenWidth = configuration.screenWidthDp
 
-            catdogs.forEach {
-//                PopularCatDogCard(it, (screenWidth / 2 - 22).dp)
+            animals.forEachIndexed { i, animal ->
+                PopularAnimalCard(
+                    ranking = i + 1,
+                    animal = animal,
+                    width = (screenWidth / 2 - 22).dp,
+                    onClick = onClick
+                )
             }
         }
     }
@@ -56,13 +59,10 @@ fun PopularCatDogContentPreview() {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            PopularCatDogContent()
+            PopularAnimalContent(
+                animals = SampleData.animals,
+                onClick = {}
+            )
         }
     }
 }
-
-data class CatDog(
-    val name: String,
-    val ranking: Int,
-    val imageUrl: String = "https://cdn2.thecatapi.com/images/cqg.jpg"
-)
