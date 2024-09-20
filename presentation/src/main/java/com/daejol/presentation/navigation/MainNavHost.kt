@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -26,7 +27,12 @@ fun MainNavHost(
         startDestination = Graph.Home.route,
         modifier = modifier
     ) {
-        homeNavGraph(navController, homeViewModel, worldCupViewModel, homeUiState)
+        homeNavGraph(
+            navController,
+            homeViewModel,
+            worldCupViewModel,
+            homeUiState
+        )
         matchingNavGraph(navController)
         composable(route = Graph.Story.route) {
             // TODO: 스토리 화면

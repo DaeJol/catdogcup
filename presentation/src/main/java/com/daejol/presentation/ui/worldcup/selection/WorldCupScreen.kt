@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,12 +34,8 @@ class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> 
 @Composable
 fun WorldCupScreen(
     viewModel: WorldCupViewModel,
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: String,
     navController: NavController? = null
 ) {
-    val t = enumValueOf<WorldCupType>(type)
-    viewModel.setType(t)
-
     return Column(
         verticalArrangement = Arrangement.Bottom,
         modifier = Modifier
@@ -54,14 +49,14 @@ fun WorldCupScreen(
                 .height(180.dp),
             contentAlignment = Alignment.Center,
         ) {
-            TopSectionWidget(t)
+            TopSectionWidget(viewModel)
         }
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(4F),
         ) {
-            MiddleSectionWidget(viewModel, t)
+            MiddleSectionWidget(viewModel)
         }
         Box(
             contentAlignment = Alignment.BottomCenter,
@@ -90,5 +85,5 @@ fun WorldCupScreen(
 @Preview
 @Composable
 fun Preview() {
-    WorldCupScreen(viewModel = viewModel(), WorldCupType.CAT.name)
+    WorldCupScreen(viewModel = viewModel())
 }

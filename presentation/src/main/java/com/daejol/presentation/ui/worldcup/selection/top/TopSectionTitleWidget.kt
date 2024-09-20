@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.ui.theme.BorderRadius
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -12,10 +14,13 @@ import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Padding
 import com.daejol.presentation.ui.theme.RichTextDecoration
 import com.daejol.presentation.ui.theme.White100
+import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 
 @Preview
 @Composable
-fun TopSectionTitleWidget() {
+fun TopSectionTitleWidget(
+    viewModel: WorldCupViewModel
+) {
     val titleTextStyle = CustomTextStyle(
         fontSize = 24f,
         fontWeight = FontWeight.Bold
@@ -35,10 +40,10 @@ fun TopSectionTitleWidget() {
     val descTextStyle2 = CustomTextStyle()
 
     CustomRichText {
-        RichText("고양이 월드컵에", textStyle = titleTextStyle, endOfLine = true)
+        RichText("${viewModel.worldCupType.value.title} 월드컵에", textStyle = titleTextStyle, endOfLine = true)
         RichText("오신 걸 환영해요!", textStyle = titleTextStyle, endOfLine = true)
         RichText("", endOfLine = true)
-        RichText("어떤 고양이를", textStyle = subTitleTextStyle, endOfLine = true)
+        RichText("어떤 친구를", textStyle = subTitleTextStyle, endOfLine = true)
         RichText("골라볼까요?", textStyle = subTitleTextStyle, endOfLine = true)
         RichText("", endOfLine = true)
         RichText(

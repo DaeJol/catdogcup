@@ -1,5 +1,6 @@
 package com.daejol.presentation.navigation
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -24,6 +25,7 @@ fun NavGraphBuilder.homeNavGraph(
     navigation(startDestination = Screen.Home.route, route = Graph.Home.route) {
         composable(route = Screen.Home.route) {
             HomeScreen(
+                viewModel = worldCupViewModel,
                 navController = navController,
                 onDetailButtonClicked = {
                     homeViewModel.setBreed(it)
@@ -32,9 +34,8 @@ fun NavGraphBuilder.homeNavGraph(
             )
         }
         composable(route = Screen.WorldCupSelection.route) {
-            WorldCupScreen(
+             WorldCupScreen(
                 viewModel = worldCupViewModel,
-                type = "CAT",
                 navController = navController
             )
         }
