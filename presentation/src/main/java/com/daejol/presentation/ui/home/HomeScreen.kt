@@ -27,6 +27,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.data.SampleData
@@ -34,9 +35,11 @@ import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
+import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 
 @Composable
 fun HomeScreen(
+    viewModel: WorldCupViewModel,
     navController: NavController? = null,
     onDetailButtonClicked: (Animal) -> Unit
 ) {
@@ -53,7 +56,7 @@ fun HomeScreen(
                     .padding(innerPadding)
                     .verticalScroll(scrollState)
             ) {
-                WorldCupContent(navController)
+                WorldCupContent(viewModel = viewModel, navController)
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
                 PopularAnimalContent(SampleData.animals, onDetailButtonClicked)
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -113,9 +116,12 @@ fun Title(
 
 @Preview
 @Composable
-fun HomeScreenPreview() {
+fun HomeScreenPreview(
+    viewModel: WorldCupViewModel
+) {
     CatdogcupTheme {
         HomeScreen(
+            viewModel = viewModel,
             onDetailButtonClicked = {}
         )
     }

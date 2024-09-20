@@ -17,13 +17,13 @@ import com.daejol.presentation.R
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.worldCupViewModel
+import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 
 @Composable
 fun WorldCupContent(
+    viewModel: WorldCupViewModel,
     navController: NavController? = null
 ) {
-    val worldCupViewModel = worldCupViewModel()
-
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
     ) {
@@ -35,7 +35,7 @@ fun WorldCupContent(
             R.string.cat_world_cup_button,
             R.drawable.cat,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.CAT)
+                viewModel.setType(WorldCupType.CAT)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
@@ -46,7 +46,7 @@ fun WorldCupContent(
             R.string.dog_world_cup_button,
             R.drawable.dog,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.DOG)
+                viewModel.setType(WorldCupType.DOG)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
@@ -57,7 +57,7 @@ fun WorldCupContent(
             R.string.mixed_world_cup_button,
             R.drawable.catdog,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.COMBINED)
+                viewModel.setType(WorldCupType.COMBINED)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
@@ -66,12 +66,14 @@ fun WorldCupContent(
 
 @Preview
 @Composable
-fun WorldCupContentPreview() {
+fun WorldCupContentPreview(
+    viewModel: WorldCupViewModel
+) {
     CatdogcupTheme {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            WorldCupContent()
+            WorldCupContent(viewModel)
         }
     }
 }

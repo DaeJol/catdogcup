@@ -6,8 +6,10 @@ import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-enum class WorldCupType(value: String) {
-    CAT("CAT"), DOG("DOG"), COMBINED("COMBINED")
+enum class WorldCupType(val value: String, val title: String) {
+    CAT("CAT", "고양이"),
+    DOG("DOG", "강아지"),
+    COMBINED("COMBINED", "멍냥이")
 }
 
 class GetImageUseCase @Inject constructor(

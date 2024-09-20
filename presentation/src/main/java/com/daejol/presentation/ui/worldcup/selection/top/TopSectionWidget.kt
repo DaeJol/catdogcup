@@ -11,12 +11,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.daejol.domain.usecase.WorldCupType
+import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 import com.daejol.presentation.ui.worldcup.selection.WorldCupPreviewParameterProvider
 
 @Preview
 @Composable
 fun TopSectionWidget(
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    viewModel: WorldCupViewModel
 ) {
     return Row(
         modifier = Modifier
@@ -27,10 +28,10 @@ fun TopSectionWidget(
             .weight(2f)
             .padding(24.dp, 0.dp, 0.dp, 0.dp)
         ) {
-            TopSectionTitleWidget()
+            TopSectionTitleWidget(viewModel)
         }
         Box(modifier = Modifier.weight(1f)) {
-            TopSectionCatImageWidget(type = type)
+            TopSectionCatImageWidget(type = viewModel.worldCupType.value)
         }
     }
 }
