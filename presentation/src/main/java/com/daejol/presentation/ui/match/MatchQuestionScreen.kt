@@ -14,6 +14,7 @@ import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,7 +48,10 @@ fun MatchQuestionScreen(
     val sh = configuration.screenHeightDp.dp
     val sw = configuration.screenWidthDp.dp
 
-    viewModel.init()
+    LaunchedEffect(key1 = "MatchQuestionScreen") {
+        viewModel.init()
+    }
+
     val index = remember {
         mutableIntStateOf(0)
     }

@@ -24,7 +24,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -32,6 +35,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
@@ -55,15 +60,13 @@ fun MatchResultScreen(
     val sh = configuration.screenHeightDp.dp
     val sw = configuration.screenWidthDp.dp
 
-    val result = viewModel
+    val result = viewModel.matchResult.value
 
     return CatdogcupTheme(
         statusBarColor = Orange80
     ) {
         // A surface container using the 'background' color from the theme
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        Column {
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -93,13 +96,15 @@ fun MatchResultScreen(
                             endOfLine = true
                         )
                         RichText(
-                            "Russian Blue",
+                            "${result?.name}",
                             textStyle = CustomTextStyle(
                                 fontColor = White100,
                                 fontFamily = MoveSans,
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = 32f
                             ),
+                            modifier = Modifier
+                                .padding(vertical = 4.dp),
                             endOfLine = true
                         )
                         RichText(
@@ -136,8 +141,13 @@ fun MatchResultScreen(
                     )
                 }
                 // 스페이스 여백 공간 하나 만들고 (fillMax
-                GlideImage(
-                    imageModel = R.drawable.sample_cat,
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(result?.imageUrl)
+                        .build(),
+                    placeholder = painterResource(id = R.drawable.catdogcup_logo),
+                    contentDescription = "고양이 매칭 결과",
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .width(sw / 2)
                         .aspectRatio(1.0F)
@@ -150,24 +160,21 @@ fun MatchResultScreen(
                 )
             }
             Spacer(modifier = Modifier
-                .height(100.dp))
+                .height(70.dp))
 
-            // TODO: CustomRichText로 바꿀 것
-            Text(
-                text = """
-                    Russian Blue는 어쩌구 저쩌구 하는 성격이에요.
-                    그래서 어쩌구 저쩌구 하는 당신과 굉장히 비슷한 성격을 가졌어요.
-
-                    다만 어쩌구 저쩌구 해서 저쩌구하는 친구랍니다.
-                    이런 성격엔 어쩌구 저쩌구 고양이나 강아지와 굉장히 잘 어울리곤 해요.
-                """.trimIndent(),
-                style = TextStyle(
-                    fontFamily = Gimpo,
-                ),
-                maxLines = 8,
-                modifier = Modifier
-                    .width(sw / 10 * 9)
-            )
+            CustomRichText {
+                RichText(
+                    text = "${result?.description}".trimIndent(),
+                    textStyle = CustomTextStyle(
+                        fontFamily = Gimpo,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14f
+                    ),
+                    modifier = Modifier
+                        .width(sw / 10 * 9)
+                        .padding(start = 10.dp)
+                )
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -198,6 +205,7 @@ fun MatchResultScreen(
                 }
                 Button(
                     onClick = {
+                        viewModel.matchResult.value = null
                         navController.navigate(Screen.Matching.route)
                     },
                     modifier = Modifier

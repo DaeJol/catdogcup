@@ -33,14 +33,13 @@ class MatchViewModel @Inject constructor(
         MatchQuestionType.Relaxed to 0,
         MatchQuestionType.Lively to 0
     )
-    val currentResult: MutableMap<MatchQuestionType, Int> = _currentResult
 
     private val _matchResult = mutableStateOf<BreedInfoEntity?>(null)
     val matchResult: MutableState<BreedInfoEntity?> = _matchResult
 
     fun init() {
-        currentResult.keys.forEach { key ->
-            currentResult[key] = 0
+        _currentResult.keys.forEach { key ->
+            _currentResult[key] = 0
         }
     }
 
@@ -49,13 +48,15 @@ class MatchViewModel @Inject constructor(
     }
 
     fun add(answer: AnswerData) {
-        currentResult[answer.answerType]?.plus(1)
+        if (_currentResult[answer.answerType] != null) {
+            _currentResult[answer.answerType]?.plus(1)
+        }
     }
 
     private fun calculateResult(): String {
         var result = ""
         matchQuestionUseCase.matchPairList.forEach { p ->
-            result += if (currentResult[p.first]!! > currentResult[p.second]!!) {
+            result += if (_currentResult[p.first]!! > _currentResult[p.second]!!) {
                 p.first.char
             } else {
                 p.second.char
@@ -71,7 +72,6 @@ class MatchViewModel @Inject constructor(
                 calculateResult()
             ).collect {
                 matchResult.value = it
-                println("[keykat] result::::: ${matchResult.value}")
             }
         }
     }
