@@ -10,13 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
 import com.daejol.presentation.ui.worldcup.selection.WorldCupPreviewParameterProvider
 
 @Preview
 @Composable
 fun TopSectionWidget(
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: AnimalType
 ) {
     return Row(
         modifier = Modifier

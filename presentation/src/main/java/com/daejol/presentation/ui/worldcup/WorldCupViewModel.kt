@@ -20,7 +20,8 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
 import com.daejol.domain.usecase.SaveImageUseCase
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
+import com.daejol.presentation.model.ImageModel
 import java.io.File
 import javax.inject.Inject
 import kotlin.math.pow
@@ -31,8 +32,8 @@ class WorldCupViewModel @Inject constructor(
     private val imageUseCase: GetImageUseCase,
     private val saveImageUseCase: SaveImageUseCase,
 ) : ViewModel() {
-    private val _worldCupType = mutableStateOf(WorldCupType.CAT)
-    val worldCupType: State<WorldCupType> = _worldCupType
+    private val _worldCupType = mutableStateOf(AnimalType.CAT)
+    val worldCupType: State<AnimalType> = _worldCupType
 
     private val _worldCupLevel = mutableStateOf("16강")
     val worldCupLevel: State<String> = _worldCupLevel
@@ -58,7 +59,7 @@ class WorldCupViewModel @Inject constructor(
     private val _gameProgressImageList =
         mutableStateOf<MutableList<MutableList<ImageModel>>>(mutableListOf())
 
-    fun setType(type: WorldCupType) {
+    fun setType(type: AnimalType) {
         _worldCupType.value = type
     }
 

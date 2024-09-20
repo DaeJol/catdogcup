@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +17,7 @@ import com.daejol.presentation.ui.match.MatchLoadingScreen
 import com.daejol.presentation.ui.match.MatchQuestionScreen
 import com.daejol.presentation.ui.match.MatchResultScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
+import com.daejol.presentation.ui.story.StoryScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.ui.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.ui.worldcup.selection.WorldCupScreen
@@ -26,9 +28,11 @@ fun MainNavHost(
     modifier: Modifier
 ) {
     val worldCupViewModel = worldCupViewModel()
+    val storyViewModel = storyViewModel()
     val homeViewModel = homeViewModel()
 
     val homeUiState by homeViewModel.uiState.collectAsState()
+    storyViewModel.getStoryImages(LocalContext.current)
 
     NavHost(
         navController = navController,
@@ -96,12 +100,13 @@ fun MainNavHost(
 
 
         composable(route = Screen.Story.route) {
-            // TODO: 스토리 화면
+            StoryScreen(viewModel = storyViewModel)
         }
 
         composable(route = Screen.MyPage.route) {
             MyPageScreen(navController = navController)
         }
+
         composable(route = Screen.Bookmark.route) {
             BookmarkScreen()
         }

@@ -1,4 +1,4 @@
-package com.daejol.presentation.ui.worldcup
+package com.daejol.presentation.model
 
 import coil.request.ImageRequest
 import com.daejol.domain.entity.ImageEntity

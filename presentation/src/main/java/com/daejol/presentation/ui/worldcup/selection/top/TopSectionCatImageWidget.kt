@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.worldcup.selection.WorldCupPreviewParameterProvider
@@ -29,12 +29,12 @@ import com.daejol.presentation.ui.worldcup.selection.WorldCupPreviewParameterPro
 @Preview
 @Composable
 fun TopSectionCatImageWidget(
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: AnimalType
 ) {
     val image = when (type) {
-        WorldCupType.CAT -> R.drawable.main_cat
-        WorldCupType.DOG -> R.drawable.main_dog
-        WorldCupType.COMBINED -> R.drawable.main_combined
+        AnimalType.CAT -> R.drawable.main_cat
+        AnimalType.DOG -> R.drawable.main_dog
+        AnimalType.COMBINED -> R.drawable.main_combined
         else -> null
     }
 

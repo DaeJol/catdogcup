@@ -18,17 +18,17 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.utils.BottomButton
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 import com.daejol.presentation.ui.worldcup.selection.middle.MiddleSectionWidget
 
-class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> {
+class WorldCupPreviewParameterProvider : PreviewParameterProvider<AnimalType> {
     override val values = sequenceOf(
-        WorldCupType.CAT,
-        WorldCupType.DOG,
-        WorldCupType.COMBINED,
+        AnimalType.CAT,
+        AnimalType.DOG,
+        AnimalType.COMBINED,
     )
 }
 
@@ -38,7 +38,7 @@ fun WorldCupScreen(
     @PreviewParameter(WorldCupPreviewParameterProvider::class) type: String,
     navController: NavController? = null
 ) {
-    val t = enumValueOf<WorldCupType>(type)
+    val t = enumValueOf<AnimalType>(type)
     viewModel.setType(t)
 
     return Column(
@@ -90,5 +90,5 @@ fun WorldCupScreen(
 @Preview
 @Composable
 fun Preview() {
-    WorldCupScreen(viewModel = viewModel(), WorldCupType.CAT.name)
+    WorldCupScreen(viewModel = viewModel(), AnimalType.CAT.name)
 }
