@@ -26,5 +26,6 @@ data class BreedInfoEntity(
     @SerializedName("vocalisation")
     val vocalisation: Int?,
     @SerializedName("wikipedia_url")
-    val wikipediaUrl: String?
+    val wikipediaUrl: String?,
+    val imageUrl: String?
 )

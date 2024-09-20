@@ -14,6 +14,10 @@ import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -36,12 +40,29 @@ import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun MatchQuestionScreen(
+    viewModel: MatchViewModel,
     navController: NavController? = null
 ) {
     val configuration = LocalConfiguration.current
 
     val sh = configuration.screenHeightDp.dp
     val sw = configuration.screenWidthDp.dp
+
+    LaunchedEffect(key1 = "MatchQuestionScreen") {
+        viewModel.init()
+    }
+
+    val index = remember {
+        mutableIntStateOf(0)
+    }
+
+    val questions = remember {
+        mutableStateOf(viewModel.getQuestions())
+    }
+
+    var currentQuestion = remember {
+        mutableStateOf(questions.value[index.intValue])
+    }
 
     return CatdogcupTheme(
         statusBarColor = Orange80
@@ -63,6 +84,7 @@ fun MatchQuestionScreen(
                             .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
+                        Text(text = "테스트입니다:::${index.intValue}")
                         Spacer(modifier = Modifier.height(20.dp))
                         CustomRichText(
                             defaultFontWeight = FontWeight.SemiBold,
@@ -78,10 +100,11 @@ fun MatchQuestionScreen(
                                     fontSize = 16f
                                 ),
                                 lineHeight = 10.dp,
+                                modifier = Modifier.padding(vertical = 4.dp),
                                 endOfLine = true
                             )
                             RichText(
-                                "5 / 10",
+                                "${index.intValue + 1} / ${questions.value.size}",
                                 textStyle = CustomTextStyle(
                                     fontColor = White100,
                                     fontFamily = MoveSans,
@@ -89,27 +112,17 @@ fun MatchQuestionScreen(
                                     fontSize = 36f
                                 ),
                                 lineHeight = 100.dp,
-                                endOfLine = true
+                                modifier = Modifier.padding(vertical = 4.dp),
+                                endOfLine = true,
                             )
-
-                            // TODO: RichText 줄바꿈 되도록 수정할 것
                             RichText(
-                                "집 밖에서 노는 것과 집 안에서 노는 것.",
+                                currentQuestion.value.question,
                                 textStyle = CustomTextStyle(
                                     fontFamily = Gimpo,
                                     fontWeight = FontWeight.Normal,
                                     fontSize = 18f
                                 ),
-                            )
-
-                            // TODO: RichText 줄바꿈 되도록 수정할 것
-                            RichText(
-                                "어떤 것이 더 좋은가요?",
-                                textStyle = CustomTextStyle(
-                                    fontFamily = Gimpo,
-                                    fontWeight = FontWeight.Normal,
-                                    fontSize = 18f
-                                ),
+                                modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp)
                             )
                         }
                     }
@@ -141,27 +154,15 @@ fun MatchQuestionScreen(
             ) {
                 Spacer(modifier = Modifier.height(50.dp))
                 Button(
-                    onClick = {},
-                    modifier = Modifier
-                        .width(sw / 5 * 4),
-                    colors = ButtonColors(
-                        containerColor = Orange100,
-                        contentColor = Orange100,
-                        disabledContentColor = Orange100,
-                        disabledContainerColor = Orange100
-                    )
-                ) {
-                    Text(
-                        text = "집 밖은 위험해! 집이 제일 좋아.",
-                        color = White100,
-                        fontFamily = Pretendard,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(
                     onClick = {
-                        navController?.navigate(Screen.MatchingLoading.route)
+                        viewModel.add(currentQuestion.value.answerList.first())
+
+                        index.intValue += 1
+                        currentQuestion.value = questions.value[index.intValue]
+
+                        if (index.intValue == questions.value.size - 1) {
+                            navController?.navigate(Screen.MatchingLoading.route)
+                        }
                     },
                     modifier = Modifier
                         .width(sw / 5 * 4),
@@ -173,7 +174,34 @@ fun MatchQuestionScreen(
                     )
                 ) {
                     Text(
-                        text = "노는 건 무조건 밖이지! 집은 재미 없어.",
+                        text = currentQuestion.value.answerList.first().answer,
+                        color = White100,
+                        fontFamily = Pretendard,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(
+                    onClick = {
+                        viewModel.add(currentQuestion.value.answerList.last())
+                        index.intValue += 1
+                        currentQuestion.value = questions.value[index.intValue]
+
+                        if (index.intValue == questions.value.size - 1) {
+                            navController?.navigate(Screen.MatchingLoading.route)
+                        }
+                    },
+                    modifier = Modifier
+                        .width(sw / 5 * 4),
+                    colors = ButtonColors(
+                        containerColor = Orange100,
+                        contentColor = Orange100,
+                        disabledContentColor = Orange100,
+                        disabledContainerColor = Orange100
+                    )
+                ) {
+                    Text(
+                        text = currentQuestion.value.answerList.last().answer,
                         color = White100,
                         fontFamily = Pretendard,
                         fontWeight = FontWeight.Bold

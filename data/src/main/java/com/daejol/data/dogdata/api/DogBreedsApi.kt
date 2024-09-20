@@ -10,5 +10,5 @@ public interface DogBreedsApi {
     suspend fun getDogBreeds(): retrofit2.Response<List<DogBreedsDto>?>
 
     @GET("breeds/{id}")
-    suspend fun getDogBreed(id: String): retrofit2.Response<DogBreedDto?>
+    suspend fun getDogBreed(id: String): retrofit2.Response<DogBreedsDto?>
 }

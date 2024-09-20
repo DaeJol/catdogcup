@@ -107,7 +107,7 @@ object AppModule {
                 uriBuilder.addQueryParameter(key, value)
             }
 
-            println("[keykat] $uriBuilder")
+            println("[keykat] url Builder ---- $uriBuilder")
 
             return chain.proceed(
                 request.newBuilder()

@@ -12,7 +12,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
 import com.daejol.presentation.R
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.worldCupViewModel
@@ -35,7 +35,7 @@ fun WorldCupContent(
             R.string.cat_world_cup_button,
             R.drawable.cat,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.CAT)
+                worldCupViewModel.setType(AnimalType.CAT)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
@@ -46,7 +46,7 @@ fun WorldCupContent(
             R.string.dog_world_cup_button,
             R.drawable.dog,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.DOG)
+                worldCupViewModel.setType(AnimalType.DOG)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
@@ -57,7 +57,7 @@ fun WorldCupContent(
             R.string.mixed_world_cup_button,
             R.drawable.catdog,
             onClick = {
-                worldCupViewModel.setType(WorldCupType.COMBINED)
+                worldCupViewModel.setType(AnimalType.COMBINED)
                 navController?.navigate(Screen.WorldCupSelection.route)
             }
         )

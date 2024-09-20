@@ -2,6 +2,7 @@ package com.daejol.presentation.ui.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
@@ -9,6 +10,9 @@ import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.daejol.presentation.model.Screen
+import com.daejol.presentation.ui.theme.Black100
+import com.daejol.presentation.ui.theme.White100
+import okhttp3.Route
 
 @Stable
 class AppState(
@@ -23,9 +27,50 @@ class AppState(
         Screen.MatchingResult.route,
     )
 
+    private val customColorList = mapOf(
+        Screen.Story.route to Black100,
+    )
+
+    private val customIconColorList = mapOf(
+        Screen.Story.route to White100,
+    )
+
+    private val customSystemBarColorList = mapOf(
+        Screen.Story.route to Black100,
+    )
+
+    @Composable
+    fun setBottomNavigationBarCustomColor(): Color? {
+        val current = navController
+            .currentBackStackEntryAsState().value?.destination?.route
+
+        return customColorList[current]
+    }
+
+    @Composable
+    fun setBottomNavigationBarIconCustomColor(): Color? {
+        val current = navController
+            .currentBackStackEntryAsState().value?.destination?.route
+
+        return customIconColorList[current]
+    }
+
+    @Composable
+    fun setSystemBarCustomColor(): Color? {
+        val current = navController
+            .currentBackStackEntryAsState().value?.destination?.route
+
+        return customSystemBarColorList[current]
+    }
+
     val shouldShowBottomBar: Boolean
         @Composable get() = navController
             .currentBackStackEntryAsState().value?.destination?.route !in disableBottomBarScreenList
+
+
+    val useSystemBarCustomColor: Boolean
+        @Composable get() = navController
+            .currentBackStackEntryAsState().value?.destination?.route in customSystemBarColorList.keys
 
     val currentRoute: String?
         get() = navController.currentDestination?.route

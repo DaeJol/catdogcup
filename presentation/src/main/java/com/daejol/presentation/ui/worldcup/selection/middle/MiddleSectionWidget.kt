@@ -9,14 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.daejol.domain.usecase.WorldCupType
+import com.daejol.domain.usecase.AnimalType
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 import com.daejol.presentation.ui.worldcup.selection.WorldCupPreviewParameterProvider
 
 @Composable
 fun MiddleSectionWidget(
     viewModel: WorldCupViewModel,
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: AnimalType
 ) {
     Column(
         modifier = Modifier

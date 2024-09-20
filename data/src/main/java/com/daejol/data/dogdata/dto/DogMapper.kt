@@ -28,7 +28,8 @@ object DogMapper {
             vcahospitalsUrl = this.vcahospitalsUrl,
             vetstreetUrl = this.vetstreetUrl,
             vocalisation = this.vocalisation,
-            wikipediaUrl = this.wikipediaUrl
+            wikipediaUrl = this.wikipediaUrl,
+            imageUrl = "",
         )
     }
 

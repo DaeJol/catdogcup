@@ -6,6 +6,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.ui.home.HomeViewModel
+import com.daejol.presentation.ui.match.MatchViewModel
+import com.daejol.presentation.ui.story.StoryViewModel
 import com.daejol.presentation.ui.utils.AppState
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 
@@ -14,6 +16,12 @@ fun homeViewModel(): HomeViewModel = hiltViewModel()
 
 @Composable
 fun worldCupViewModel(): WorldCupViewModel = hiltViewModel()
+
+@Composable
+fun storyViewModel(): StoryViewModel = hiltViewModel()
+
+@Composable
+fun matchViewModel(): MatchViewModel = hiltViewModel()
 
 @Composable
 fun rememberAppState(

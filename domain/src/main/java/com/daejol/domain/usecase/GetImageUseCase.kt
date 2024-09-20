@@ -6,7 +6,7 @@ import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-enum class WorldCupType(value: String) {
+enum class AnimalType(value: String) {
     CAT("CAT"), DOG("DOG"), COMBINED("COMBINED")
 }
 
@@ -15,18 +15,18 @@ class GetImageUseCase @Inject constructor(
     private val dogImagesRepository: DogImagesRepository
 ) {
     suspend fun getAnimalList(
-        type: WorldCupType,
+        type: AnimalType,
         randomImageCount: Int
     ): Flow<List<ImageEntity>> {
         println("[keykat] randomImageCount:: $randomImageCount")
         return when (type) {
-            WorldCupType.CAT -> getRandomCatImages(randomImageCount)
+            AnimalType.CAT -> getRandomCatImages(randomImageCount)
                 ?: flow { listOf<ImageEntity>() }
 
-            WorldCupType.DOG -> getRandomCatImages(randomImageCount)
+            AnimalType.DOG -> getRandomCatImages(randomImageCount)
                 ?: flow { listOf<ImageEntity>() }
 
-            WorldCupType.COMBINED -> merge(
+            AnimalType.COMBINED -> merge(
                 getRandomCatImages(randomImageCount / 2)?.map { it } ?: flow { },
                 getRandomDogImages(randomImageCount / 2)?.map { it } ?: flow { }
             )
